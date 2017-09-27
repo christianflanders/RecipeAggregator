@@ -10,7 +10,9 @@ import UIKit
 
 class RecipeTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var cellRatingLabel: UILabel!
     @IBOutlet weak var cellLabel: UILabel!
+    @IBOutlet weak var dateAddedCell: UILabel!
     @IBOutlet weak var cellRecipeImage: UIImageView!
     
     override func awakeFromNib() {

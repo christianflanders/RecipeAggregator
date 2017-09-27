@@ -15,7 +15,8 @@ import CoreData
 
 class ShareViewController: UIViewController {
     private var urlString: String?
-    
+    private var textString: String?
+
     var selectedRecipe: RecipeFromURL!
     let store = PersistanceService.store
     var recipes = [RecipeFromURL]()
@@ -33,12 +34,13 @@ class ShareViewController: UIViewController {
         let extensionItem = extensionContext?.inputItems[0] as! NSExtensionItem
         
         let contentTypeURL = kUTTypeURL as String
-        
+
         
         for attachment in extensionItem.attachments as! [NSItemProvider] {
             attachment.loadItem(forTypeIdentifier: contentTypeURL , options: nil, completionHandler: { (results, error) in
                 let url = results as! URL?
                 self.urlString = url!.absoluteString
+
                 print("!!!!!!!!!!! \(url!.absoluteString)")
             })
             
@@ -53,7 +55,8 @@ class ShareViewController: UIViewController {
         // This is called after the user selects Post. Do the upload of contentText and/or NSExtensionContext attachments.
         let date = NSDate()
         if urlString != nil {
-            store.storeRecipe(withTitle: "FromSafari", url: urlString!, date: date)
+            textString = getPreviewNameFromHTML(url: urlString!)
+            store.storeRecipe(withTitle: textString!, url: urlString!, date: date)
         } else {
             print("Error storing url?")
         }
@@ -75,6 +78,47 @@ class ShareViewController: UIViewController {
     }
     
     
+    private func getPreviewNameFromHTML(url: String) -> String?{
+        let myURL = URL(string: url)
+        let searchFor = "meta property=\"og:title\" content="
+        do {
+            let myHTML = try String(contentsOf: myURL!, encoding: .ascii)
+            let array = myHTML.components(separatedBy: "<")
+            let filtered = array.filter {
+                $0.contains(searchFor)
+            }
+            print(filtered)
+            if filtered.count != 0 {
+                let thingsToFilter = [searchFor, "\"", ">", " /", "\n"]
+                var titleHTMLTag = filtered[0]
+                for i in thingsToFilter {
+                    titleHTMLTag = titleHTMLTag.replacingOccurrences(of: i, with: "")
+                }
+                print("The title is  \(titleHTMLTag)")
+                return titleHTMLTag
+            } else {
+                let tryTag = array.filter {
+                    $0.contains("title")
+                }
+                if tryTag.count != 0 {
+                    let thingsToFilter = ["\"", ">", " /", "\n", "title"]
+                    var titleHTMLTag = tryTag[0]
+                    for i in thingsToFilter {
+                        titleHTMLTag = titleHTMLTag.replacingOccurrences(of: i, with: "")
+                    }
+                    print("The title is  \(titleHTMLTag)")
+                    return titleHTMLTag
+                } else {
+                    return nil
+                }
+            }
+        } catch {
+            print("Error")
+            return nil
+        }
+    }
+
 
 
 }
+
