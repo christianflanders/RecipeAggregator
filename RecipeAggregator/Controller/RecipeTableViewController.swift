@@ -17,16 +17,15 @@ class RecipeTableViewController: UITableViewController {
     var selectedURL = ""
     var recipeArray = [RecipeFromURL]()
     var imageArray = [UIImage?]()
+    var selectedRecipe = RecipeFromURL()
     
     @IBOutlet weak var addButton: UIBarButtonItem!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        //reloads the table view data when the app is opened, specifically when we add a new recipe from Safari.
         NotificationCenter.default.addObserver(forName: Notification.Name.UIApplicationWillEnterForeground, object: nil, queue: nil, using: reloadTableView)
-        
-        
         
     }
     
@@ -91,17 +90,14 @@ class RecipeTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedURL = recipeArray[indexPath.row].url!
+        selectedRecipe = recipeArray[indexPath.row]
         performSegue(withIdentifier: "tablePressed", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "tablePressed" {
-//            let destination = segue.destination as! WebViewController
-//            destination.url = selectedURL
-            let destination = segue.destination as! UINavigationController
-            let target = destination.topViewController as! WebViewController
-            target.url = selectedURL
+            let destinaton = segue.destination as! TableViewPressedViewController
+            destinaton.selectedRecipe = selectedRecipe
         }
     }
     
@@ -183,8 +179,6 @@ class RecipeTableViewController: UITableViewController {
         default:
             return "No Rating!"
         }
-        
-        
         
     }
     

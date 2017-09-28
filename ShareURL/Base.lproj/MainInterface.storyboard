@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="j1y-V4-xli">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,14 +15,14 @@
             <objects>
                 <viewController id="j1y-V4-xli" customClass="ShareViewController" customModule="ShareURL" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" opaque="NO" contentMode="scaleToFill" id="wbc-yd-nQP">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u7S-SA-a8b">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="97"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="50.666666666666664"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Added!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8qT-Q7-vi0">
-                                        <rect key="frame" x="160" y="38" width="55" height="21"/>
+                                        <rect key="frame" x="179.66666666666666" y="15" width="55" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -36,7 +37,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="1Xd-am-t49" firstAttribute="bottom" secondItem="u7S-SA-a8b" secondAttribute="bottom" constant="570" id="B18-R9-8TI"/>
+                            <constraint firstItem="1Xd-am-t49" firstAttribute="bottom" secondItem="u7S-SA-a8b" secondAttribute="bottom" multiplier="1.8" constant="645" id="B18-R9-8TI"/>
                             <constraint firstItem="u7S-SA-a8b" firstAttribute="top" secondItem="wbc-yd-nQP" secondAttribute="top" id="Csy-E2-Yd0"/>
                             <constraint firstItem="u7S-SA-a8b" firstAttribute="leading" secondItem="wbc-yd-nQP" secondAttribute="leading" id="Mbl-Ky-7mT"/>
                             <constraint firstAttribute="trailing" secondItem="u7S-SA-a8b" secondAttribute="trailing" id="oTC-PH-Rt4"/>
@@ -44,6 +45,7 @@
                         <viewLayoutGuide key="safeArea" id="1Xd-am-t49"/>
                     </view>
                     <connections>
+                        <outlet property="addedView" destination="u7S-SA-a8b" id="aBr-xM-t5W"/>
                         <outlet property="mainView" destination="u7S-SA-a8b" id="Oik-vW-YsM"/>
                     </connections>
                 </viewController>

@@ -22,6 +22,7 @@ class ShareViewController: UIViewController {
     var recipes = [RecipeFromURL]()
     
     
+    @IBOutlet weak var addedView: UIView!
     
     
     
@@ -65,6 +66,9 @@ class ShareViewController: UIViewController {
                 completion()
             }
         }
+        UIView.animate(withDuration: 3, animations: {
+            self.addedView.alpha = 0
+            })
         delayWithSeconds(3) {
             self.extensionContext!.completeRequest(returningItems: nil, completionHandler: nil)
         }

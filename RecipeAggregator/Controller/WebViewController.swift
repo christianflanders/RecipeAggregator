@@ -23,9 +23,10 @@ class WebViewController: UIViewController,WKUIDelegate,WKNavigationDelegate  {
         webView.uiDelegate = self
         webView.navigationDelegate = self
         view = webView
-        let myURL = URL(string: url)
-        let myRequest = URLRequest(url: myURL!)
+        if let myURL = URL(string: url) {
+        let myRequest = URLRequest(url: myURL)
         webView.load(myRequest)
+        }
         // Do any additional setup after loading the view.
     }
 
