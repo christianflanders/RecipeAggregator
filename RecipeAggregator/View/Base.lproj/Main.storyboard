@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Sorting Options View Controller-->
         <scene sceneID="gEi-x3-PvB">
             <objects>
-                <viewController id="SYp-rR-Jyn" sceneMemberID="viewController">
+                <viewController id="SYp-rR-Jyn" customClass="SortingOptionsViewController" customModule="RecipeAggregator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gdE-re-X7g">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -22,21 +22,41 @@
                                 <rect key="frame" x="120" y="117" width="134" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Filter By Date"/>
+                                <connections>
+                                    <action selector="filterByDateButton:" destination="SYp-rR-Jyn" eventType="touchUpInside" id="TJ3-gY-ccJ"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k5U-9c-nLI">
                                 <rect key="frame" x="135" y="271" width="104" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Filter By Rating"/>
+                                <connections>
+                                    <action selector="sortByRatingButton:" destination="SYp-rR-Jyn" eventType="touchUpInside" id="dvc-1k-s1l"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LBo-yd-O9h">
                                 <rect key="frame" x="141" y="411" width="93" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Filter By Meal"/>
+                                <connections>
+                                    <action selector="sortByMealButton:" destination="SYp-rR-Jyn" eventType="touchUpInside" id="QKB-DD-3zc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cXV-z4-W4h">
+                                <rect key="frame" x="138" y="494" width="100" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Filter By Name"/>
+                                <connections>
+                                    <action selector="filterByNameButton:" destination="SYp-rR-Jyn" eventType="touchUpInside" id="UB0-Tf-3zn"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="x5P-0Y-WR7"/>
                     </view>
+                    <connections>
+                        <segue destination="Edk-Qi-tSP" kind="show" identifier="sortingButtonPressed" id="IKG-dr-YBs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DVx-eq-Xza" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -58,6 +78,10 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UQX-lt-MUb">
+                                            <rect key="frame" x="8" y="8" width="359" height="83.5"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="errorstop" translatesAutoresizingMaskIntoConstraints="NO" id="eJs-dx-2Q6">
                                             <rect key="frame" x="22" y="0.0" width="100" height="100"/>
                                             <constraints>
@@ -88,14 +112,19 @@
                                             </subviews>
                                         </stackView>
                                     </subviews>
+                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="bottom" secondItem="mcH-sw-dSu" secondAttribute="bottom" constant="10.5" id="A5w-eX-iUc"/>
                                         <constraint firstItem="eJs-dx-2Q6" firstAttribute="leading" secondItem="H9t-gI-DMu" secondAttribute="leadingMargin" constant="14" id="LLA-eB-fdU"/>
                                         <constraint firstAttribute="trailing" secondItem="mcH-sw-dSu" secondAttribute="trailing" constant="10" id="NXR-VW-FWb"/>
+                                        <constraint firstItem="UQX-lt-MUb" firstAttribute="top" secondItem="H9t-gI-DMu" secondAttribute="top" constant="8" id="QCc-NT-vZ0"/>
                                         <constraint firstItem="eJs-dx-2Q6" firstAttribute="top" secondItem="H9t-gI-DMu" secondAttribute="top" id="V3d-ss-ToT"/>
                                         <constraint firstItem="mcH-sw-dSu" firstAttribute="leading" secondItem="eJs-dx-2Q6" secondAttribute="trailing" constant="5" id="c39-iV-JSk"/>
                                         <constraint firstItem="eJs-dx-2Q6" firstAttribute="centerY" secondItem="H9t-gI-DMu" secondAttribute="centerY" id="cmL-OH-vbu"/>
                                         <constraint firstItem="mcH-sw-dSu" firstAttribute="top" secondItem="H9t-gI-DMu" secondAttribute="top" id="exk-aj-li8"/>
+                                        <constraint firstAttribute="trailing" secondItem="UQX-lt-MUb" secondAttribute="trailing" constant="8" id="mkJ-dI-W0m"/>
+                                        <constraint firstItem="UQX-lt-MUb" firstAttribute="leading" secondItem="H9t-gI-DMu" secondAttribute="leading" constant="8" id="rBM-GN-xcu"/>
+                                        <constraint firstAttribute="bottom" secondItem="UQX-lt-MUb" secondAttribute="bottom" constant="8" id="zpZ-6U-QTX"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -563,6 +592,6 @@
         <image name="errorstop" width="500" height="500"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="88S-ez-X7n"/>
+        <segue reference="IKG-dr-YBs"/>
     </inferredMetricsTieBreakers>
 </document>

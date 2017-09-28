@@ -18,15 +18,19 @@ class RecipeTableViewController: UITableViewController {
     var recipeArray = [RecipeFromURL]()
     var imageArray = [UIImage?]()
     var selectedRecipe = RecipeFromURL()
+    var whatToSortBy: SortBy = .date
+    
+
+    
+    
     
     @IBOutlet weak var addButton: UIBarButtonItem!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //reloads the table view data when the app is opened, specifically when we add a new recipe from Safari.
         NotificationCenter.default.addObserver(forName: Notification.Name.UIApplicationWillEnterForeground, object: nil, queue: nil, using: reloadTableView)
-        
+
     }
     
     deinit {
@@ -36,6 +40,17 @@ class RecipeTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         store.fetchRecipes()
         recipeArray = store.fetchedRecipes
+        recipeArray.sort {
+            switch whatToSortBy {
+            case .date:
+                return $0.dateAdded! > $1.dateAdded!
+            case .rating:
+                return $0.rating > $1.rating
+            default:
+                return $0.name! < $1.name!
+            }
+            
+        }
         self.tableView.reloadData()
 
     }
@@ -50,18 +65,15 @@ class RecipeTableViewController: UITableViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return recipeArray.count
     }
 
@@ -81,17 +93,14 @@ class RecipeTableViewController: UITableViewController {
                     }
                 }
             }
-
-//        cell.imageView?.image = imageArray[indexPath.row]
-//        cell.cellRecipeImage.image = recipeArray[indexPath.row].image
-        // Configure the cell...
-
         return cell
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedRecipe = recipeArray[indexPath.row]
+        tableView.deselectRow(at: indexPath, animated: true)
         performSegue(withIdentifier: "tablePressed", sender: self)
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
