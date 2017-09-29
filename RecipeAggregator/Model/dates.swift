@@ -8,6 +8,8 @@
 
 import Foundation
 
+//Required so we can compare dates to sort the main list.
+
 public func ==(lhs: NSDate, rhs: NSDate) -> Bool {
     return lhs === rhs || lhs.compare(rhs as Date) == .orderedSame
 }

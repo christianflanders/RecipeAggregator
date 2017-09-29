@@ -8,10 +8,11 @@
 
 import UIKit
 
-class EditExistingRecipeViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSource {
+class EditExistingRecipeViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     
     let store = PersistanceService.store
-
+    var nameChanged = false
+    var oldRecipeName = ""
     
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -40,11 +41,16 @@ class EditExistingRecipeViewController: UIViewController,UIPickerViewDelegate, U
         recipeNameTextField.placeholder = selectedRecipe?.name
         mealPicker.delegate = self
         mealPicker.dataSource = self
+        recipeNameTextField.delegate = self
         
         
     }
     
-    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        nameChanged = true
+        oldRecipeName = (selectedRecipe?.name)!
+        
+    }
     
     
     @IBAction func ratingSlider(_ sender: UISlider) {
@@ -58,6 +64,9 @@ class EditExistingRecipeViewController: UIViewController,UIPickerViewDelegate, U
 
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if nameChanged == true {
+            selectedRecipe?.name = recipeNameTextField.text
+        }
         print("leaving editing mode")
         store.saveContext()
         
