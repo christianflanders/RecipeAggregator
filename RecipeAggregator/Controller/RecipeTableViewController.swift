@@ -13,14 +13,14 @@ import CoreData
 class RecipeTableViewController: UITableViewController {
     
     let store = PersistanceService.store
-
+    
     var selectedURL = ""
     var recipeArray = [RecipeFromURL]()
-    var imageArray = [UIImage?]()
+    var storedImages = [String:UIImage]()
     var selectedRecipe = RecipeFromURL()
     var whatToSortBy: SortBy = .date
     
-
+    
     
     
     
@@ -29,8 +29,9 @@ class RecipeTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //we get this notification when the app is opened, allowing us to reload data for the tableview if a recipe has been added.
         NotificationCenter.default.addObserver(forName: Notification.Name.UIApplicationWillEnterForeground, object: nil, queue: nil, using: reloadTableView)
-
+        
     }
     
     deinit {
@@ -52,50 +53,57 @@ class RecipeTableViewController: UITableViewController {
             
         }
         self.tableView.reloadData()
-
+        
     }
     
     func reloadTableView(notification:Notification) {
         self.store.fetchRecipes()
         self.recipeArray = self.store.fetchedRecipes
-
-
+        //        imageArray.removeAll()
+        //        for _ in 0..<recipeArray.count {
+        //            print("Doing shit!")
+        //            imageArray.append(#imageLiteral(resourceName: "errorstop"))
+        //        }
         self.tableView.reloadData()
-}
-
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return recipeArray.count
     }
-
-
+    
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let currentRecipe = recipeArray[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "recipeCell", for: indexPath) as! RecipeTableViewCell
-        cell.cellLabel.text = recipeArray[indexPath.row].name
-        cell.dateAddedCell.text = String(describing: recipeArray[indexPath.row].dateAdded!)
-        cell.cellRatingLabel.text = ratingToStarsForLabel(rating: recipeArray[indexPath.row].rating)
+        cell.cellLabel.text = currentRecipe.name
+        cell.dateAddedCell.text = String(describing: currentRecipe.dateAdded!)
+        cell.cellRatingLabel.text = ratingToStarsForLabel(rating: currentRecipe.rating)
+        cell.imageView?.image = nil
         
-            DispatchQueue.global(qos: .background).async {
-                if let imageURL = self.getPreviewImageURLFromHTML(url: self.recipeArray[indexPath.row].url!) {
-                    
-                    let image = self.downloadImageFromURL(imageURL)
-                    DispatchQueue.main.async {
-                        cell.cellRecipeImage.image = image
-                    }
+        DispatchQueue.global(qos: .background).async {
+            if let imageURL = self.getPreviewImageURLFromHTML(url: self.recipeArray[indexPath.row].url!) {
+                
+                let image = self.downloadImageFromURL(imageURL)
+                self.storedImages[currentRecipe.url!] = image
+                DispatchQueue.main.async {
+                         let cellToUpdate = self.tableView?.cellForRow(at: indexPath) as! RecipeTableViewCell
+                        cellToUpdate.cellRecipeImage.image = self.storedImages[currentRecipe.url!]
                 }
             }
+        }
         return cell
     }
-
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedRecipe = recipeArray[indexPath.row]
         tableView.deselectRow(at: indexPath, animated: true)
@@ -191,5 +199,5 @@ class RecipeTableViewController: UITableViewController {
         
     }
     
-
+    
 }

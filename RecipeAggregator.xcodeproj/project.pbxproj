@@ -18,6 +18,7 @@
 		6B47C2CF1F6C6D23002E42A3 /* RecipeModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6B13724B1F6B10BF00EE07C8 /* RecipeModel.xcdatamodeld */; };
 		6B47C2D11F6C71DD002E42A3 /* PercistanceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B68BE4D1F6C669A00B14003 /* PercistanceService.swift */; };
 		6B68BE4E1F6C669A00B14003 /* PercistanceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B68BE4D1F6C669A00B14003 /* PercistanceService.swift */; };
+		6BA882891F82D1210063D096 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA882881F82D1210063D096 /* MainTabBarViewController.swift */; };
 		6BBBCD891F7D9F900023D177 /* dates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBBCD881F7D9F900023D177 /* dates.swift */; };
 		6BBF7A081F676D7600FD87D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBF7A071F676D7600FD87D6 /* AppDelegate.swift */; };
 		6BBF7A0D1F676D7600FD87D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BBF7A0B1F676D7600FD87D6 /* Main.storyboard */; };
@@ -70,6 +71,7 @@
 		6B414E081F6B43C2002B5DE6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6B47C2CE1F6C6B72002E42A3 /* ShareURL.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareURL.entitlements; sourceTree = "<group>"; };
 		6B68BE4D1F6C669A00B14003 /* PercistanceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercistanceService.swift; sourceTree = "<group>"; };
+		6BA882881F82D1210063D096 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		6BBBCD881F7D9F900023D177 /* dates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dates.swift; sourceTree = "<group>"; };
 		6BBF7A041F676D7600FD87D6 /* RecipeAggregator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipeAggregator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BBF7A071F676D7600FD87D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				6BBF7A1B1F676E2600FD87D6 /* RecipeTableViewController.swift */,
 				6B3FE38F1F7D8082008AC01C /* SortingOptionsViewController.swift */,
 				6BBF7A1F1F67AFC700FD87D6 /* WebViewController.swift */,
+				6BA882881F82D1210063D096 /* MainTabBarViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6BA882891F82D1210063D096 /* MainTabBarViewController.swift in Sources */,
 				6BBF7A1E1F676F8A00FD87D6 /* RecipeClass.swift in Sources */,
 				6B13724D1F6B10BF00EE07C8 /* RecipeModel.xcdatamodeld in Sources */,
 				6BBF7A201F67AFC700FD87D6 /* WebViewController.swift in Sources */,
