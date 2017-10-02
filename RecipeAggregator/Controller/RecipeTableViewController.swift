@@ -84,22 +84,29 @@ class RecipeTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let currentRecipe = recipeArray[indexPath.row]
+
         let cell = tableView.dequeueReusableCell(withIdentifier: "recipeCell", for: indexPath) as! RecipeTableViewCell
         cell.cellLabel.text = currentRecipe.name
         cell.dateAddedCell.text = String(describing: currentRecipe.dateAdded!)
         cell.cellRatingLabel.text = ratingToStarsForLabel(rating: currentRecipe.rating)
-        cell.imageView?.image = nil
-        
+        cell.cellRecipeImage?.image = nil
+        if let image = storedImages[currentRecipe.url!]{
+            cell.cellRecipeImage?.image = image
+        } else {
         DispatchQueue.global(qos: .background).async {
             if let imageURL = self.getPreviewImageURLFromHTML(url: self.recipeArray[indexPath.row].url!) {
                 
                 let image = self.downloadImageFromURL(imageURL)
                 self.storedImages[currentRecipe.url!] = image
                 DispatchQueue.main.async {
-                         let cellToUpdate = self.tableView?.cellForRow(at: indexPath) as! RecipeTableViewCell
-                        cellToUpdate.cellRecipeImage.image = self.storedImages[currentRecipe.url!]
+                    if let cellToUpdate = self.tableView?.cellForRow(at: indexPath) {
+                        let customCell = cellToUpdate as! RecipeTableViewCell
+                        customCell.cellRecipeImage.image = self.storedImages[currentRecipe.url!]
+                        customCell.setNeedsLayout()
+                    }
                 }
             }
+        }
         }
         return cell
     }
