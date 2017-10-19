@@ -19,6 +19,7 @@
 		6B47C2D11F6C71DD002E42A3 /* PercistanceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B68BE4D1F6C669A00B14003 /* PercistanceService.swift */; };
 		6B68BE4E1F6C669A00B14003 /* PercistanceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B68BE4D1F6C669A00B14003 /* PercistanceService.swift */; };
 		6BA882891F82D1210063D096 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA882881F82D1210063D096 /* MainTabBarViewController.swift */; };
+		6BAB1F5F1F992DD500E67B9D /* MainSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BAB1F5E1F992DD500E67B9D /* MainSelectionTableViewController.swift */; };
 		6BBBCD891F7D9F900023D177 /* dates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBBCD881F7D9F900023D177 /* dates.swift */; };
 		6BBF7A081F676D7600FD87D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBF7A071F676D7600FD87D6 /* AppDelegate.swift */; };
 		6BBF7A0D1F676D7600FD87D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BBF7A0B1F676D7600FD87D6 /* Main.storyboard */; };
@@ -72,6 +73,7 @@
 		6B47C2CE1F6C6B72002E42A3 /* ShareURL.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareURL.entitlements; sourceTree = "<group>"; };
 		6B68BE4D1F6C669A00B14003 /* PercistanceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercistanceService.swift; sourceTree = "<group>"; };
 		6BA882881F82D1210063D096 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
+		6BAB1F5E1F992DD500E67B9D /* MainSelectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSelectionTableViewController.swift; sourceTree = "<group>"; };
 		6BBBCD881F7D9F900023D177 /* dates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dates.swift; sourceTree = "<group>"; };
 		6BBF7A041F676D7600FD87D6 /* RecipeAggregator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipeAggregator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BBF7A071F676D7600FD87D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 		6B14A33C1F74590500949EB0 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				6BAB1F5E1F992DD500E67B9D /* MainSelectionTableViewController.swift */,
 				6BBF7A071F676D7600FD87D6 /* AppDelegate.swift */,
 				6B3FE38D1F7C7177008AC01C /* EditExistingRecipeViewController.swift */,
 				6B3FE38B1F7C5F05008AC01C /* TableViewPressedViewController.swift */,
@@ -322,6 +325,7 @@
 				6BA882891F82D1210063D096 /* MainTabBarViewController.swift in Sources */,
 				6BBF7A1E1F676F8A00FD87D6 /* RecipeClass.swift in Sources */,
 				6B13724D1F6B10BF00EE07C8 /* RecipeModel.xcdatamodeld in Sources */,
+				6BAB1F5F1F992DD500E67B9D /* MainSelectionTableViewController.swift in Sources */,
 				6BBF7A201F67AFC700FD87D6 /* WebViewController.swift in Sources */,
 				6B3FE38C1F7C5F05008AC01C /* TableViewPressedViewController.swift in Sources */,
 				6BBF7A1A1F676DDD00FD87D6 /* RecipeTableViewCell.swift in Sources */,
