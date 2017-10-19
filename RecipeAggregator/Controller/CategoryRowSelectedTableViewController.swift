@@ -97,23 +97,23 @@ class CategoryRowSelectedTableViewController: UITableViewController {
         let selectedRecipe = sortedRecipeArray[indexPath.row]
         cell.textLabel?.text = selectedRecipe.name!
         let recipeURL = selectedRecipe.url!
-        if let image = storedImages.images[recipeURL]{
-            cell.imageView?.image = image
-        } else {
-            DispatchQueue.global(qos: .background).async { [weak self] in
-                if let imageURL = self?.selectedRecipe.previewImageURL {
-                    
-                    let image = self?.storedImages.downloadImageFromURL(URL(string:imageURL)!)
-                    self?.storedImages.images[recipeURL] = image
-                    DispatchQueue.main.async { [weak self] in
-                        if let cellToUpdate = self?.tableView?.cellForRow(at: indexPath) {
-                            cellToUpdate.imageView?.image = self?.storedImages.images[recipeURL]
-                            cellToUpdate.setNeedsLayout()
-                        }
-                    }
-                }
-            }
-        }
+//        if let image = storedImages.images[recipeURL]{
+//            cell.imageView?.image = image
+//        } else {
+//            DispatchQueue.global(qos: .background).async { [weak self] in
+//                if let imageURL = self?.selectedRecipe.previewImageURL {
+//
+//                    let image = self?.storedImages.downloadImageFromURL(URL(string:imageURL)!)
+//                    self?.storedImages.images[recipeURL] = image
+//                    DispatchQueue.main.async { [weak self] in
+//                        if let cellToUpdate = self?.tableView?.cellForRow(at: indexPath) {
+//                            cellToUpdate.imageView?.image = self?.storedImages.images[recipeURL]
+//                            cellToUpdate.setNeedsLayout()
+//                        }
+//                    }
+//                }
+//            }
+//        }
 
         return cell
      }

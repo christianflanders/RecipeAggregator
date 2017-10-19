@@ -28,22 +28,22 @@ class StoredImages {
             
         }
     }
-    func downloadAllImagesFromArray(_ inputArray: [RecipeFromURL]) {
-        for i in inputArray {
-            guard let imagePreviewURL = i.previewImageURL else {
-                //dosomething here
-                return
-            }
-            if let url = URL(string: imagePreviewURL) {
-                DispatchQueue.main.async {
-                    let image = self.downloadImageFromURL(url)
-                    self.images[i.url!] = image
-                }
-                
-            }
-        }
-    }
-    
+//    func downloadAllImagesFromArray(_ inputArray: [RecipeFromURL]) {
+//        for i in inputArray {
+//            guard let imagePreviewURL = i.previewImageURL else {
+//                //dosomething here
+//                return
+//            }
+//            if let url = URL(string: imagePreviewURL) {
+//                DispatchQueue.main.async {
+//                    let image = self.downloadImageFromURL(url)
+//                    self.images[i.url!] = image
+//                }
+//                
+//            }
+//        }
+//    }
+//    
     
 
     

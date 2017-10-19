@@ -30,7 +30,7 @@ final class PersistanceService{
         recipe.name = title
         recipe.dateAdded = date
         recipe.meal = "Unsorted"
-        recipe.previewImageURL = getPreviewImageURLFromHTML(url: url)
+//        print("adding preview image url, \(recipe.previewImageURL)")
         try! context.save()
         print("Storing...")
         fetchRecipes()
