@@ -28,6 +28,38 @@ class StoredImages {
             
         }
     }
+    
+    func getPreviewImageURLFromHTML(url: String) -> URL?{
+        let myURL = URL(string: url)
+        let searchFor = "meta property=\"og:image\" content="
+        do {
+            let myHTML = try String(contentsOf: myURL!, encoding: .ascii)
+            let array = myHTML.components(separatedBy: "<")
+            let filtered = array.filter {
+                $0.contains(searchFor)
+            }
+            print(filtered)
+            if filtered.count != 0 {
+                let thingsToFilter = [searchFor, "\"", ">", " /", "\n"]
+                var imageURL = filtered[0]
+                for i in thingsToFilter {
+                    imageURL = imageURL.replacingOccurrences(of: i, with: "")
+                }
+                print("The image url is \(imageURL)")
+                if let urlForImage = URL(string: imageURL) {
+                    return  urlForImage
+                } else {
+                    print("No image found or something went wrong")
+                    return nil
+                }
+            } else {
+                return nil
+            }
+        } catch {
+            print("Error")
+            return nil
+        }
+    }
 //    func downloadAllImagesFromArray(_ inputArray: [RecipeFromURL]) {
 //        for i in inputArray {
 //            guard let imagePreviewURL = i.previewImageURL else {
