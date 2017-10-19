@@ -14,7 +14,7 @@ class MainSelectionTableViewController: UITableViewController {
     //MARK: Enums
     
     //MARK: Constants
-    let tableViewOptions = ["Breakfast", "Lunch", "Dinner", "Snacks", "Favorites"]
+    let tableViewOptions = ["Breakfast", "Lunch", "Dinner", "Snacks", "Favorites","Unsorted"]
     //MARK: Variables
     var rowSelected = ""
     //MARK: Outlets

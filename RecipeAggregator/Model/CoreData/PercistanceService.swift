@@ -29,6 +29,7 @@ final class PersistanceService{
         recipe.url = url
         recipe.name = title
         recipe.dateAdded = date
+        recipe.meal = "Unsorted"
         try! context.save()
         print("Storing...")
         fetchRecipes()

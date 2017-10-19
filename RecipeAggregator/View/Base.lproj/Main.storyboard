@@ -657,7 +657,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="SSA-fT-Y1B"/>
                     <connections>
-                        <segue destination="Luk-aP-mgW" kind="show" identifier="CategoryRowSelectedSegue" action="showDetailViewController:sender:" id="z4H-nd-C0Y"/>
+                        <segue destination="Luk-aP-mgW" kind="show" identifier="CategoryRowSelectedSegue" id="z4H-nd-C0Y"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pCa-FL-6bU" userLabel="First Responder" sceneMemberID="firstResponder"/>

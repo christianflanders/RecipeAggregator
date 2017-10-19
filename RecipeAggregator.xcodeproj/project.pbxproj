@@ -117,12 +117,7 @@
 				6BAB1F5E1F992DD500E67B9D /* MainSelectionTableViewController.swift */,
 				6BAB1F601F99336600E67B9D /* CategoryRowSelectedTableViewController.swift */,
 				6BBF7A071F676D7600FD87D6 /* AppDelegate.swift */,
-				6B3FE38D1F7C7177008AC01C /* EditExistingRecipeViewController.swift */,
-				6B3FE38B1F7C5F05008AC01C /* TableViewPressedViewController.swift */,
-				6BBF7A1B1F676E2600FD87D6 /* RecipeTableViewController.swift */,
-				6B3FE38F1F7D8082008AC01C /* SortingOptionsViewController.swift */,
-				6BBF7A1F1F67AFC700FD87D6 /* WebViewController.swift */,
-				6BA882881F82D1210063D096 /* MainTabBarViewController.swift */,
+				6BAB731C1F993B6D00DFC9A2 /* OLD CONTROLLERS */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -170,6 +165,19 @@
 				6B414E081F6B43C2002B5DE6 /* Info.plist */,
 			);
 			path = ShareURL;
+			sourceTree = "<group>";
+		};
+		6BAB731C1F993B6D00DFC9A2 /* OLD CONTROLLERS */ = {
+			isa = PBXGroup;
+			children = (
+				6B3FE38D1F7C7177008AC01C /* EditExistingRecipeViewController.swift */,
+				6B3FE38B1F7C5F05008AC01C /* TableViewPressedViewController.swift */,
+				6BBF7A1B1F676E2600FD87D6 /* RecipeTableViewController.swift */,
+				6B3FE38F1F7D8082008AC01C /* SortingOptionsViewController.swift */,
+				6BBF7A1F1F67AFC700FD87D6 /* WebViewController.swift */,
+				6BA882881F82D1210063D096 /* MainTabBarViewController.swift */,
+			);
+			path = "OLD CONTROLLERS";
 			sourceTree = "<group>";
 		};
 		6BBF79FB1F676D7600FD87D6 = {
