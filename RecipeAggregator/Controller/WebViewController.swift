@@ -17,7 +17,6 @@ class WebViewController: UIViewController,WKUIDelegate,WKNavigationDelegate  {
     var url = ""
     override func viewDidLoad() {
         super.viewDidLoad()
-        activityIndicator.startAnimating()
         let webConfiguration = WKWebViewConfiguration()
         webView = WKWebView(frame: .zero, configuration: webConfiguration)
         webView.uiDelegate = self

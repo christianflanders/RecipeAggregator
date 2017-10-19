@@ -687,10 +687,120 @@
                             <outlet property="delegate" destination="Luk-aP-mgW" id="ZZd-Cr-7wc"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <segue destination="tXb-gY-fuQ" kind="show" identifier="RecipeTablePressedSegue" id="gXm-WL-wcc"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kk7-KX-VgM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-497" y="-1617"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="B0a-04-O7I">
+            <objects>
+                <viewController id="G9I-Lx-V0n" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="G2O-sr-fXC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Wfs-l7-kP4"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dfE-za-iXT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="703" y="-2299"/>
+        </scene>
+        <!--Recipe Detail View Controller-->
+        <scene sceneID="Qx6-Qi-HPA">
+            <objects>
+                <viewController id="tXb-gY-fuQ" customClass="RecipeDetailViewController" customModule="RecipeAggregator" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6VH-bR-cCg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZsV-50-LTQ">
+                                <rect key="frame" x="0.0" y="64" width="375" height="237"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="237" id="VUK-6J-kHQ"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vw3-9L-ih2">
+                                <rect key="frame" x="144" y="309" width="87" height="68"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="68" id="L1Q-Ri-4kX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="33"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vpU-1Q-pIG">
+                                <rect key="frame" x="145" y="544" width="84" height="30"/>
+                                <state key="normal" title="View Recipe"/>
+                                <connections>
+                                    <segue destination="G8a-Cg-ea8" kind="show" identifier="OpenRecipeInWebView" id="FuB-rg-6bt"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="DZB-oP-244" firstAttribute="bottom" secondItem="vpU-1Q-pIG" secondAttribute="bottom" constant="49" id="1jX-qn-vNe"/>
+                            <constraint firstItem="ZsV-50-LTQ" firstAttribute="leading" secondItem="6VH-bR-cCg" secondAttribute="leading" id="42F-uc-01U"/>
+                            <constraint firstItem="ZsV-50-LTQ" firstAttribute="top" secondItem="DZB-oP-244" secondAttribute="top" id="5rq-g9-dlJ"/>
+                            <constraint firstItem="vpU-1Q-pIG" firstAttribute="centerX" secondItem="Vw3-9L-ih2" secondAttribute="centerX" id="GFh-b6-0SK"/>
+                            <constraint firstAttribute="trailing" secondItem="ZsV-50-LTQ" secondAttribute="trailing" id="Ldh-2j-ZhF"/>
+                            <constraint firstItem="Vw3-9L-ih2" firstAttribute="top" secondItem="ZsV-50-LTQ" secondAttribute="bottom" constant="8" symbolic="YES" id="Lqe-gs-iYF"/>
+                            <constraint firstItem="Vw3-9L-ih2" firstAttribute="leading" secondItem="DZB-oP-244" secondAttribute="leading" constant="144" id="qvA-oW-kqo"/>
+                            <constraint firstItem="vpU-1Q-pIG" firstAttribute="centerX" secondItem="ZsV-50-LTQ" secondAttribute="centerX" id="zOL-to-RLB"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="DZB-oP-244"/>
+                    </view>
+                    <toolbarItems>
+                        <barButtonItem title="Edit Recipe" id="0b6-nV-HxQ">
+                            <connections>
+                                <segue destination="G9I-Lx-V0n" kind="show" id="sTt-BK-IAS"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="recipeImagePreview" destination="ZsV-50-LTQ" id="Jfi-va-hbK"/>
+                        <outlet property="recipeNameLabel" destination="Vw3-9L-ih2" id="2DK-xT-Ykx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Efl-vZ-hbi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="688.79999999999995" y="-1597.1514242878561"/>
+        </scene>
+        <!--Web View Controller-->
+        <scene sceneID="ipT-7M-PpO">
+            <objects>
+                <viewController id="G8a-Cg-ea8" customClass="WebViewController" customModule="RecipeAggregator" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mm5-Yk-MNU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9vC-TV-ve9">
+                                <rect key="frame" x="0.0" y="64" width="375" height="559"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="9vC-TV-ve9" firstAttribute="bottom" secondItem="LN7-VI-SqR" secondAttribute="bottom" id="3PJ-bL-CYz"/>
+                            <constraint firstItem="9vC-TV-ve9" firstAttribute="leading" secondItem="mm5-Yk-MNU" secondAttribute="leading" id="aLH-1W-W2x"/>
+                            <constraint firstItem="9vC-TV-ve9" firstAttribute="top" secondItem="LN7-VI-SqR" secondAttribute="top" id="f1U-rc-kkE"/>
+                            <constraint firstAttribute="trailing" secondItem="9vC-TV-ve9" secondAttribute="trailing" id="lxR-8L-Hd4"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="LN7-VI-SqR"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nv0-Jt-37x" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1708" y="-1585.4572713643179"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="KG4-ly-aId">
@@ -736,6 +846,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="To2-lw-IqI"/>
         <segue reference="IKG-dr-YBs"/>
         <segue reference="gHu-ji-zmv"/>
     </inferredMetricsTieBreakers>
