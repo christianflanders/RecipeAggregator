@@ -656,10 +656,41 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="SSA-fT-Y1B"/>
+                    <connections>
+                        <segue destination="Luk-aP-mgW" kind="show" identifier="CategoryRowSelectedSegue" action="showDetailViewController:sender:" id="z4H-nd-C0Y"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pCa-FL-6bU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1564" y="-1630.4347826086957"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="O0P-4a-Dn1">
+            <objects>
+                <tableViewController id="Luk-aP-mgW" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="RYc-a0-6L7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecipeCell" id="FsF-VR-4Qf">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FsF-VR-4Qf" id="jla-Nv-OOc">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Luk-aP-mgW" id="PoO-dn-mrR"/>
+                            <outlet property="delegate" destination="Luk-aP-mgW" id="ZZd-Cr-7wc"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kk7-KX-VgM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-497" y="-1617"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="KG4-ly-aId">
