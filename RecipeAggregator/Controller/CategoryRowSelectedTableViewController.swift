@@ -33,6 +33,9 @@ class CategoryRowSelectedTableViewController: UITableViewController {
         //Download recipes from CoreData
         store.fetchRecipes()
         masterRecipeArray = store.fetchedRecipes
+        for i in masterRecipeArray {
+            print(i.name)
+        }
         //Depending on the information we got from the mainselectionTableViewController, fiter our results to display the correct selection of recipes
         switch categorySelected {
         case "Breakfast":
@@ -59,11 +62,16 @@ class CategoryRowSelectedTableViewController: UITableViewController {
             sortedRecipeArray = masterRecipeArray.filter {
                 $0.meal == "Unsorted"
             }
+        case "All":
+            sortedRecipeArray = masterRecipeArray
+            
         default:
             fatalError("Fatal Error! Some unkown category was selected")
         }
-        tableView.reloadData()
-    }
+        for i in sortedRecipeArray {
+            print(i.name)
+        }
+     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -77,17 +85,17 @@ class CategoryRowSelectedTableViewController: UITableViewController {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return sortedRecipeArray.count
+        return 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        return sortedRecipeArray.count
     }
     
      override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
      let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeCell", for: indexPath)
-        cell.textLabel?.text = sortedRecipeArray[indexPath.row].name
+     cell.textLabel?.text = sortedRecipeArray[indexPath.row].name!
      return cell
      }
  
