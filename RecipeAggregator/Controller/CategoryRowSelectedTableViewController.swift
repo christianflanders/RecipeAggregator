@@ -14,9 +14,12 @@ class CategoryRowSelectedTableViewController: UITableViewController {
     //MARK: Constants
     private let store = PersistanceService.store
     
+    
     //MARK: Variables
     var categorySelected = ""
     var selectedRecipe = RecipeFromURL()
+    var storedImages = StoredImages()
+    
     //MARK: Outlets
     
     //MARK: Weak Vars
@@ -26,6 +29,8 @@ class CategoryRowSelectedTableViewController: UITableViewController {
     //MARK: Private Variables
     private var masterRecipeArray = [RecipeFromURL]()
     private var sortedRecipeArray = [RecipeFromURL]()
+    
+    
     
     //MARK: View Life Cycle
     override func viewDidLoad() {
@@ -88,9 +93,29 @@ class CategoryRowSelectedTableViewController: UITableViewController {
     }
     
      override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-     let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeCell", for: indexPath)
-     cell.textLabel?.text = sortedRecipeArray[indexPath.row].name!
-     return cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeCell", for: indexPath)
+        let selectedRecipe = sortedRecipeArray[indexPath.row]
+        cell.textLabel?.text = selectedRecipe.name!
+        let recipeURL = selectedRecipe.url!
+        if let image = storedImages.images[recipeURL]{
+            cell.imageView?.image = image
+        } else {
+            DispatchQueue.global(qos: .background).async { [weak self] in
+                if let imageURL = self?.selectedRecipe.previewImageURL {
+                    
+                    let image = self?.storedImages.downloadImageFromURL(URL(string:imageURL)!)
+                    self?.storedImages.images[recipeURL] = image
+                    DispatchQueue.main.async { [weak self] in
+                        if let cellToUpdate = self?.tableView?.cellForRow(at: indexPath) {
+                            cellToUpdate.imageView?.image = self?.storedImages.images[recipeURL]
+                            cellToUpdate.setNeedsLayout()
+                        }
+                    }
+                }
+            }
+        }
+
+        return cell
      }
  
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

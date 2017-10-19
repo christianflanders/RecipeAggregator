@@ -2,7 +2,7 @@
 //  RecipeFromURL+CoreDataProperties.swift
 //  RecipeAggregator
 //
-//  Created by Christian Flanders on 9/26/17.
+//  Created by Christian Flanders on 10/19/17.
 //  Copyright © 2017 Christian Flanders. All rights reserved.
 //
 //
@@ -20,6 +20,7 @@ extension RecipeFromURL {
     @NSManaged public var dateAdded: NSDate?
     @NSManaged public var meal: String?
     @NSManaged public var name: String?
+    @NSManaged public var previewImageURL: String?
     @NSManaged public var rating: Int16
     @NSManaged public var url: String?
 

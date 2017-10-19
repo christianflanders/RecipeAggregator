@@ -30,6 +30,7 @@ final class PersistanceService{
         recipe.name = title
         recipe.dateAdded = date
         recipe.meal = "Unsorted"
+        recipe.previewImageURL = getPreviewImageURLFromHTML(url: url)
         try! context.save()
         print("Storing...")
         fetchRecipes()
@@ -75,7 +76,38 @@ final class PersistanceService{
         return container
     }()
     
-    
+    private func getPreviewImageURLFromHTML(url: String) -> String?{
+        let myURL = URL(string: url)
+        let searchFor = "meta property=\"og:image\" content="
+        do {
+            let myHTML = try String(contentsOf: myURL!, encoding: .ascii)
+            let array = myHTML.components(separatedBy: "<")
+            let filtered = array.filter {
+                $0.contains(searchFor)
+            }
+            print(filtered)
+            if filtered.count != 0 {
+                let thingsToFilter = [searchFor, "\"", ">", " /", "\n"]
+                var imageURL = filtered[0]
+                for i in thingsToFilter {
+                    imageURL = imageURL.replacingOccurrences(of: i, with: "")
+                }
+                print("The image url is \(imageURL)")
+                if let urlForImage = URL(string: imageURL) {
+                    return String(describing: urlForImage)
+                } else {
+                    print("No image found or something went wrong")
+                    return nil
+                }
+            } else {
+                return nil
+            }
+        } catch {
+            print("Error")
+            return nil
+        }
+    }
+
     // MARK: - Core Data Saving support
     
      func saveContext () {
