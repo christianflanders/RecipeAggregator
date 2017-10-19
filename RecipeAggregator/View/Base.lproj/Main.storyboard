@@ -9,6 +9,12 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="AvenirNext.ttc">
+            <string>AvenirNext-Bold</string>
+            <string>AvenirNext-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Sorting Options View Controller-->
         <scene sceneID="gEi-x3-PvB">
@@ -78,40 +84,44 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eJs-dx-2Q6">
-                                            <rect key="frame" x="22" y="0.0" width="100" height="100"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eJs-dx-2Q6">
+                                            <rect key="frame" x="8" y="0.0" width="114" height="100"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="100" id="L8C-iL-2B0"/>
+                                                <constraint firstAttribute="width" constant="114" id="L8C-iL-2B0"/>
                                             </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="60"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
                                         </imageView>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="mcH-sw-dSu">
                                             <rect key="frame" x="127" y="0.0" width="238" height="89"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n7c-sC-T4g">
-                                                    <rect key="frame" x="0.0" y="0.0" width="238" height="48"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n7c-sC-T4g">
+                                                    <rect key="frame" x="0.0" y="0.0" width="238" height="42"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Rating" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DPJ-7P-ClU">
-                                                    <rect key="frame" x="0.0" y="48" width="238" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="0.0" y="42" width="238" height="23.5"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Date Added" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FzA-0T-21o">
-                                                    <rect key="frame" x="0.0" y="68.5" width="238" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="0.0" y="65.5" width="238" height="23.5"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </stackView>
                                     </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="bottom" secondItem="mcH-sw-dSu" secondAttribute="bottom" constant="10.5" id="A5w-eX-iUc"/>
-                                        <constraint firstItem="eJs-dx-2Q6" firstAttribute="leading" secondItem="H9t-gI-DMu" secondAttribute="leadingMargin" constant="14" id="LLA-eB-fdU"/>
+                                        <constraint firstItem="eJs-dx-2Q6" firstAttribute="leading" secondItem="H9t-gI-DMu" secondAttribute="leadingMargin" id="LLA-eB-fdU"/>
                                         <constraint firstAttribute="trailing" secondItem="mcH-sw-dSu" secondAttribute="trailing" constant="10" id="NXR-VW-FWb"/>
                                         <constraint firstItem="eJs-dx-2Q6" firstAttribute="top" secondItem="H9t-gI-DMu" secondAttribute="top" id="V3d-ss-ToT"/>
                                         <constraint firstItem="mcH-sw-dSu" firstAttribute="leading" secondItem="eJs-dx-2Q6" secondAttribute="trailing" constant="5" id="c39-iV-JSk"/>
@@ -147,12 +157,12 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addButton" destination="xZC-tx-TYR" id="w6T-Nt-m8x"/>
-                        <segue destination="FYN-6t-6W6" kind="presentation" identifier="tablePressed" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="xX5-m2-w1p"/>
+                        <segue destination="FYN-6t-6W6" kind="presentation" identifier="tablePressed" modalPresentationStyle="overCurrentContext" id="xX5-m2-w1p"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Urp-53-cp2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="68" y="892.80359820089961"/>
+            <point key="canvasLocation" x="-271.19999999999999" y="106.59670164917542"/>
         </scene>
         <!--Table View Pressed View Controller-->
         <scene sceneID="GiE-pT-CYD">
@@ -270,7 +280,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </pickerView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ckv-uq-bQg">
-                                <rect key="frame" x="0.0" y="56" width="359" height="194"/>
+                                <rect key="frame" x="8" y="75" width="359" height="194"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
@@ -360,7 +370,7 @@
                         <barButtonItem key="backBarButtonItem" title="Back" id="WFb-tW-4ON"/>
                         <barButtonItem key="leftBarButtonItem" title="Done" id="gx1-Pl-I9A">
                             <connections>
-                                <segue destination="lx0-qc-jjt" kind="show" id="88S-ez-X7n"/>
+                                <segue destination="GpF-QJ-AUO" kind="showDetail" id="gHu-ji-zmv"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -432,7 +442,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ybn-B5-Udb">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.54534512758255005" green="0.34237432479858398" blue="0.16245993971824646" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -441,7 +451,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="11u-ip-KCi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-271" y="107"/>
+            <point key="canvasLocation" x="-1130" y="107"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="H34-7A-m4e">
@@ -565,11 +575,11 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WWr-ox-otV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-574" y="923"/>
+            <point key="canvasLocation" x="-271" y="-757"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="To2-lw-IqI"/>
         <segue reference="IKG-dr-YBs"/>
+        <segue reference="gHu-ji-zmv"/>
     </inferredMetricsTieBreakers>
 </document>

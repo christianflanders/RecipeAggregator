@@ -52,6 +52,7 @@ class RecipeTableViewController: UITableViewController {
             }
             
         }
+        print("stored images count is \(storedImages.count)")
         self.tableView.reloadData()
         
     }
@@ -84,29 +85,32 @@ class RecipeTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let currentRecipe = recipeArray[indexPath.row]
-
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "recipeCell", for: indexPath) as! RecipeTableViewCell
         cell.cellLabel.text = currentRecipe.name
-        cell.dateAddedCell.text = String(describing: currentRecipe.dateAdded!)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        var convertedDate = dateFormatter.string(from: currentRecipe.dateAdded! as Date)
+        cell.dateAddedCell.text = convertedDate
         cell.cellRatingLabel.text = ratingToStarsForLabel(rating: currentRecipe.rating)
         cell.cellRecipeImage?.image = nil
         if let image = storedImages[currentRecipe.url!]{
             cell.cellRecipeImage?.image = image
         } else {
-        DispatchQueue.global(qos: .background).async {
-            if let imageURL = self.getPreviewImageURLFromHTML(url: self.recipeArray[indexPath.row].url!) {
-                
-                let image = self.downloadImageFromURL(imageURL)
-                self.storedImages[currentRecipe.url!] = image
-                DispatchQueue.main.async {
-                    if let cellToUpdate = self.tableView?.cellForRow(at: indexPath) {
-                        let customCell = cellToUpdate as! RecipeTableViewCell
-                        customCell.cellRecipeImage.image = self.storedImages[currentRecipe.url!]
-                        customCell.setNeedsLayout()
+            DispatchQueue.global(qos: .background).async { [weak self] in
+                if let imageURL = self?.getPreviewImageURLFromHTML(url: (self?.recipeArray[indexPath.row].url!)!) {
+                    
+                    let image = self?.downloadImageFromURL(imageURL)
+                    self?.storedImages[currentRecipe.url!] = image
+                    DispatchQueue.main.async { [weak self] in
+                        if let cellToUpdate = self?.tableView?.cellForRow(at: indexPath) {
+                            let customCell = cellToUpdate as! RecipeTableViewCell
+                            customCell.cellRecipeImage.image = self?.storedImages[currentRecipe.url!]
+                            customCell.setNeedsLayout()
+                        }
                     }
                 }
             }
-        }
         }
         return cell
     }

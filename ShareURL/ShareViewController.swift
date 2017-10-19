@@ -113,12 +113,12 @@ class ShareViewController: UIViewController {
                     print("The title is  \(titleHTMLTag)")
                     return titleHTMLTag
                 } else {
-                    return nil
+                    return "No name found"
                 }
             }
         } catch {
             print("Error")
-            return nil
+            return "No name found"
         }
     }
 
