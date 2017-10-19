@@ -36,27 +36,27 @@ class CategoryRowSelectedTableViewController: UITableViewController {
         //Depending on the information we got from the mainselectionTableViewController, fiter our results to display the correct selection of recipes
         switch categorySelected {
         case "Breakfast":
-            sortedRecipeArray = masterRecipeArray.sorted {
+            sortedRecipeArray = masterRecipeArray.filter {
                 $0.meal == "Breakfast"
             }
         case "Lunch":
-            sortedRecipeArray = masterRecipeArray.sorted {
+            sortedRecipeArray = masterRecipeArray.filter {
                 $0.meal == "Lunch"
             }
         case "Dinner":
-            sortedRecipeArray = masterRecipeArray.sorted {
+            sortedRecipeArray = masterRecipeArray.filter {
                 $0.meal == "Dinner"
             }
         case "Snacks":
-            sortedRecipeArray = masterRecipeArray.sorted {
+            sortedRecipeArray = masterRecipeArray.filter {
                 $0.meal == "Snacks"
             }
         case "Favorites":
-            sortedRecipeArray = masterRecipeArray.sorted {
+            sortedRecipeArray = masterRecipeArray.filter {
                 $0.rating >= 4
             }
         case "Unsorted":
-            sortedRecipeArray = masterRecipeArray.sorted {
+            sortedRecipeArray = masterRecipeArray.filter {
                 $0.meal == "Unsorted"
             }
         default:
@@ -87,7 +87,7 @@ class CategoryRowSelectedTableViewController: UITableViewController {
     
      override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
      let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeCell", for: indexPath)
-     cell.textLabel.text = sortedRecipeArray[indexPath.row]
+        cell.textLabel?.text = sortedRecipeArray[indexPath.row].name
      return cell
      }
  

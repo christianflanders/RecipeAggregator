@@ -173,7 +173,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3SW-NG-xOh">
-                                <rect key="frame" x="68" y="298" width="239" height="126"/>
+                                <rect key="frame" x="68" y="254" width="239" height="170"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oin-Ge-xcd">
                                         <rect key="frame" x="8" y="8" width="48" height="30"/>
@@ -183,10 +183,10 @@
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="Y7G-CL-dLK">
-                                        <rect key="frame" x="77" y="30" width="84" height="66"/>
+                                        <rect key="frame" x="77" y="30" width="84" height="110"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0xg-Mb-RhR">
-                                                <rect key="frame" x="0.0" y="0.0" width="84" height="29.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="84" height="51.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <state key="normal" title="View Recipe"/>
                                                 <connections>
@@ -195,7 +195,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wKk-Cq-syM">
-                                                <rect key="frame" x="0.0" y="36.5" width="84" height="29.5"/>
+                                                <rect key="frame" x="0.0" y="58.5" width="84" height="51.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <state key="normal" title="Edit Recipe"/>
                                                 <connections>
@@ -244,7 +244,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Vy6-IG-agO">
-                                <rect key="frame" x="0.0" y="64" width="375" height="29"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="29"/>
                                 <segments>
                                     <segment title="From URL"/>
                                     <segment title="Custom"/>
@@ -664,10 +664,10 @@
             </objects>
             <point key="canvasLocation" x="-1564" y="-1630.4347826086957"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Category Row Selected Table View Controller-->
         <scene sceneID="O0P-4a-Dn1">
             <objects>
-                <tableViewController id="Luk-aP-mgW" sceneMemberID="viewController">
+                <tableViewController id="Luk-aP-mgW" customClass="CategoryRowSelectedTableViewController" customModule="RecipeAggregator" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="RYc-a0-6L7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -723,6 +723,9 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Rfn-lM-RDp">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="aCe-y3-Psd" kind="relationship" relationship="rootViewController" id="aNU-N2-D1l"/>
                     </connections>
@@ -733,7 +736,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="H9b-cw-exj"/>
+        <segue reference="IKG-dr-YBs"/>
         <segue reference="gHu-ji-zmv"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -16,7 +16,7 @@ class MainSelectionTableViewController: UITableViewController {
     //MARK: Constants
     let tableViewOptions = ["Breakfast", "Lunch", "Dinner", "Snacks", "Favorites"]
     //MARK: Variables
-    
+    var rowSelected = ""
     //MARK: Outlets
     
     //MARK: Weak Vars
@@ -45,28 +45,33 @@ class MainSelectionTableViewController: UITableViewController {
         return tableViewOptions.count
     }
     
- 
-     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-     let cell = tableView.dequeueReusableCell(withIdentifier: "MainCell", for: indexPath)
-     cell.textLabel?.text = tableViewOptions[indexPath.row]
-     
-     return cell
-     }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MainCell", for: indexPath)
+        cell.textLabel?.text = tableViewOptions[indexPath.row]
+        
+        return cell
+    }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //depending on the text label of the cell, pass that information back on to the next table view controller to grab the appropriate items from CoreData
+        rowSelected = tableViewOptions[indexPath.row]
+        tableView.deselectRow(at: indexPath, animated: true)
+        performSegue(withIdentifier: "CategoryRowSelectedSegue", sender: self)
         
     }
     
- 
     
-
     
-     // MARK: - Navigation
-     
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
+    
+    
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "CategoryRowSelectedSegue" {
+            let destination = segue.destination as! CategoryRowSelectedTableViewController
+            destination.categorySelected = rowSelected
+        }
+    }
     
 }
