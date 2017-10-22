@@ -293,23 +293,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Recipe Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wtF-BW-Jin">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Recipe Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wtF-BW-Jin">
                                 <rect key="frame" x="16" y="332" width="102" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Recipe Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ikm-iw-roi">
+                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Recipe Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ikm-iw-roi">
                                 <rect key="frame" x="16" y="361" width="343" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2" minValue="1" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="rpm-t6-YQs">
+                            <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2" minValue="1" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="rpm-t6-YQs">
                                 <rect key="frame" x="16" y="468" width="187" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <action selector="ratingSlider:" destination="l19-zp-sCL" eventType="valueChanged" id="kbg-Jq-WnI"/>
                                 </connections>
@@ -353,11 +350,33 @@
                                     <action selector="doneButtonPressed:" destination="l19-zp-sCL" eventType="touchUpInside" id="ELp-JU-O4t"/>
                                 </connections>
                             </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="oho-qI-aD8">
+                                <rect key="frame" x="16" y="564" width="384" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="27" id="MWV-vN-BVj"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Breakfast"/>
+                                    <segment title="Lunch"/>
+                                    <segment title="Dinner"/>
+                                    <segment title="Snacks"/>
+                                    <segment title="Other"/>
+                                </segments>
+                                <connections>
+                                    <action selector="mealSegmentedControlPressed:" destination="l19-zp-sCL" eventType="valueChanged" id="reN-eu-sh2"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="oho-qI-aD8" firstAttribute="leading" secondItem="ikm-iw-roi" secondAttribute="leading" id="ItP-zf-KVN"/>
+                            <constraint firstItem="oho-qI-aD8" firstAttribute="leading" secondItem="Wbm-bs-zft" secondAttribute="leading" constant="16" id="UCt-qF-cf9"/>
                             <constraint firstItem="ZDZ-RF-TLQ" firstAttribute="centerX" secondItem="fgD-v9-LoS" secondAttribute="centerX" id="aHK-Lu-tQ8"/>
+                            <constraint firstItem="ZDZ-RF-TLQ" firstAttribute="top" secondItem="oho-qI-aD8" secondAttribute="bottom" constant="95" id="hTz-3T-ukL"/>
                             <constraint firstAttribute="bottom" secondItem="ZDZ-RF-TLQ" secondAttribute="bottom" constant="20" symbolic="YES" id="jPl-6G-BRz"/>
+                            <constraint firstItem="oho-qI-aD8" firstAttribute="top" secondItem="rpm-t6-YQs" secondAttribute="bottom" constant="67" id="oNQ-Mt-mr2"/>
+                            <constraint firstItem="oho-qI-aD8" firstAttribute="leading" secondItem="wtF-BW-Jin" secondAttribute="leading" id="qx9-W7-YOT"/>
+                            <constraint firstItem="oho-qI-aD8" firstAttribute="centerX" secondItem="ZDZ-RF-TLQ" secondAttribute="centerX" id="yYJ-us-W9U"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Wbm-bs-zft"/>
                     </view>
@@ -370,6 +389,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="mealSegementedControl" destination="oho-qI-aD8" id="lSo-T4-dZq"/>
                         <outlet property="ratingLabel" destination="cOs-dq-rk6" id="vYi-f5-IkO"/>
                         <outlet property="ratingSliderOutlet" destination="rpm-t6-YQs" id="X49-o1-UrB"/>
                         <outlet property="recipeNameTextField" destination="ikm-iw-roi" id="sDY-9r-ZrS"/>
@@ -377,7 +397,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X2R-Iw-K5W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="809" y="-644"/>
+            <point key="canvasLocation" x="808.69565217391312" y="-644.02173913043487"/>
         </scene>
         <!--Web View Controller-->
         <scene sceneID="dA2-hL-1rz">

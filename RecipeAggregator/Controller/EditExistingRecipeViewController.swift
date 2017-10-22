@@ -13,16 +13,17 @@ class EditExistingRecipeViewController: UIViewController, UITextFieldDelegate {
     let store = PersistanceService.store
     var nameChanged = false
     var oldRecipeName = ""
-    
+    var mealChanged = false
     
 
 
     var selectedRecipe:RecipeFromURL?
-    let mealSelection = ["Breakfast", "Lunch", "Dinner", "Snacks", "Drinks"]
+    let mealSelection = ["Breakfast", "Lunch", "Dinner", "Snacks", "Other"]
     
     @IBOutlet weak var recipeNameTextField: UITextField!
     @IBOutlet weak var ratingSliderOutlet: UISlider!
     
+    @IBOutlet weak var mealSegementedControl: UISegmentedControl!
     @IBOutlet weak var ratingLabel: UILabel!
     
     
@@ -52,7 +53,10 @@ class EditExistingRecipeViewController: UIViewController, UITextFieldDelegate {
   
     
     
-
+    @IBAction func mealSegmentedControlPressed(_ sender: UISegmentedControl) {
+        selectedRecipe?.meal = mealSelection[mealSegementedControl.selectedSegmentIndex]
+    }
+    
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
