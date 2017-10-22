@@ -42,7 +42,10 @@ class RecipeDetailViewController: UIViewController {
                     let image = stored.downloadImageFromURL(previewURL)
                     DispatchQueue.main.async {
                         self.recipeImagePreview.image = image
-                        
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        self.recipeImagePreview.image = #imageLiteral(resourceName: "errorstop")
                     }
                 }
 

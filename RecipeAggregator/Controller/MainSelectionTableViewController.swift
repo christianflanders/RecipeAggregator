@@ -31,7 +31,7 @@ class MainSelectionTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.rowHeight = (view.frame.height  / 8)
+        tableView.rowHeight = (view.frame.height  / 9)
         tableView.isScrollEnabled = false
         
     }
