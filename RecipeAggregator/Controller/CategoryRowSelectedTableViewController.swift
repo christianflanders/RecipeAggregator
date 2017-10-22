@@ -79,6 +79,27 @@ class CategoryRowSelectedTableViewController: UITableViewController {
     //MARK: IBActions
     
     //MARK: Instance Methods
+        func ratingToStarsForLabel(rating: Int16) -> String {
+    
+            switch rating {
+            case 0:
+                return "No Rating!"
+            case 1:
+                return "⭐️"
+            case 2:
+                return "⭐️⭐️"
+            case 3:
+                return "⭐️⭐️⭐️"
+            case 4:
+                return "⭐️⭐️⭐️⭐️"
+            case 5:
+                return "⭐️⭐️⭐️⭐️⭐️"
+            default:
+                return "No Rating!"
+            }
+    
+        }
+    
     
     // MARK: - Table view data source
     
@@ -93,20 +114,26 @@ class CategoryRowSelectedTableViewController: UITableViewController {
     }
     
      override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeCell", for: indexPath) as! RecipeTableViewCell
         let selectedRecipe = sortedRecipeArray[indexPath.row]
-        cell.textLabel?.text = selectedRecipe.name!
+        if let name = selectedRecipe.name {
+            cell.cellLabel.text = name
+
+        }
+        cell.dateAddedCell.text = String(describing: selectedRecipe.dateAdded)
         let recipeURL = selectedRecipe.url!
+        cell.cellRatingLabel.text = ratingToStarsForLabel(rating: selectedRecipe.rating)
         if let image = storedImages.images[recipeURL]{
-            cell.imageView?.image = image
+            cell.cellRecipeImage?.image = image
         } else {
             DispatchQueue.global(qos: .background).async { [weak self] in
                 if let imageURL = self?.storedImages.getPreviewImageURLFromHTML(url: recipeURL) {
                     let image = self?.storedImages.downloadImageFromURL(imageURL)
                     self?.storedImages.images[recipeURL] = image
                     DispatchQueue.main.async { [weak self] in
-                        if let cellToUpdate = self?.tableView?.cellForRow(at: indexPath) {
-                            cellToUpdate.imageView?.image = self?.storedImages.images[recipeURL]
+                        if let cellToUpdate = self?.tableView?.cellForRow(at: indexPath) as? RecipeTableViewCell {
+                            cellToUpdate.cellRecipeImage.image = self?.storedImages.images[recipeURL]
+                            tableView.rowHeight = 120
                             cellToUpdate.setNeedsLayout()
                         }
                     }
@@ -129,6 +156,9 @@ class CategoryRowSelectedTableViewController: UITableViewController {
         if segue.identifier == "RecipeTablePressedSegue" {
             let destinationVC = segue.destination as! RecipeDetailViewController
             destinationVC.selectedRecipe = selectedRecipe
+            if let imageToSend = storedImages.images[selectedRecipe.url!] {
+                destinationVC.recipeImage = imageToSend
+            }
         }
      }
  

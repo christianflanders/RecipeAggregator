@@ -1,8 +1,7 @@
 //
 //  AppDelegate.swift
 //  copyshit
-//
-//  Created by Christian Flanders on 9/14/17.
+////  Created by Christian Flanders on 9/14/17.
 //  Copyright © 2017 Christian Flanders. All rights reserved.
 //
 

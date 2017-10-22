@@ -8,21 +8,14 @@
 
 import UIKit
 
-class EditExistingRecipeViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
+class EditExistingRecipeViewController: UIViewController, UITextFieldDelegate {
     
     let store = PersistanceService.store
     var nameChanged = false
     var oldRecipeName = ""
     
     
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return mealSelection.count
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 1
-    }
-    
+
 
     var selectedRecipe:RecipeFromURL?
     let mealSelection = ["Breakfast", "Lunch", "Dinner", "Snacks", "Drinks"]
@@ -32,15 +25,13 @@ class EditExistingRecipeViewController: UIViewController,UIPickerViewDelegate, U
     
     @IBOutlet weak var ratingLabel: UILabel!
     
-    @IBOutlet weak var mealPicker: UIPickerView!
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         recipeNameTextField.placeholder = selectedRecipe?.name
-        mealPicker.delegate = self
-        mealPicker.dataSource = self
+
         recipeNameTextField.delegate = self
         
         
@@ -64,15 +55,18 @@ class EditExistingRecipeViewController: UIViewController,UIPickerViewDelegate, U
 
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+    }
+    
+    
+    @IBAction func doneButtonPressed(_ sender: Any) {
         if nameChanged == true {
             selectedRecipe?.name = recipeNameTextField.text
         }
         print("leaving editing mode")
         store.saveContext()
-        
+        dismiss(animated: true, completion: nil)
     }
-    
-    
     
     
     

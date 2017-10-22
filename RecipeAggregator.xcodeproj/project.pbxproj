@@ -120,6 +120,7 @@
 				6BAB1F601F99336600E67B9D /* CategoryRowSelectedTableViewController.swift */,
 				6BF6E2111F99567C00BDBEF2 /* RecipeDetailViewController.swift */,
 				6BBF7A071F676D7600FD87D6 /* AppDelegate.swift */,
+				6B3FE38D1F7C7177008AC01C /* EditExistingRecipeViewController.swift */,
 				6BBF7A1F1F67AFC700FD87D6 /* WebViewController.swift */,
 				6BAB731C1F993B6D00DFC9A2 /* OLD CONTROLLERS */,
 			);
@@ -174,7 +175,6 @@
 		6BAB731C1F993B6D00DFC9A2 /* OLD CONTROLLERS */ = {
 			isa = PBXGroup;
 			children = (
-				6B3FE38D1F7C7177008AC01C /* EditExistingRecipeViewController.swift */,
 				6B3FE38B1F7C5F05008AC01C /* TableViewPressedViewController.swift */,
 				6BBF7A1B1F676E2600FD87D6 /* RecipeTableViewController.swift */,
 				6B3FE38F1F7D8082008AC01C /* SortingOptionsViewController.swift */,

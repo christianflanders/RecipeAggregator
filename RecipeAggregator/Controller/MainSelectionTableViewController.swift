@@ -15,7 +15,8 @@ class MainSelectionTableViewController: UITableViewController {
     
     //MARK: Constants
     let tableViewOptions = ["Breakfast", "Lunch", "Dinner", "Snacks", "Favorites","Unsorted", "All"]
-    
+    let tableViewColors = [UIColor.init(red: 251/255, green: 110/255, blue: 82/255, alpha: 1),UIColor.init(red: 255/255, green: 207/255, blue: 85/255, alpha: 100),UIColor.init(red: 160/255, green: 212/255, blue: 104/255, alpha: 1),UIColor.init(red: 72/255, green: 207/255, blue: 174/255, alpha: 100),UIColor.init(red: 79/255, green: 192/255, blue: 232/255, alpha: 1), UIColor.init(red: 93/255, green: 155/255, blue: 236/255, alpha: 100),UIColor.init(red: 172/255, green: 146/255, blue: 237/255, alpha: 100)]
+    let tableViewImages = [#imageLiteral(resourceName: "Breakfast Icon 2x"),#imageLiteral(resourceName: "Lunch icon 2x"),#imageLiteral(resourceName: "Dinner Icon 2x"),#imageLiteral(resourceName: "Snacks Icon 2x"),#imageLiteral(resourceName: "Favorites Icon 2x"),#imageLiteral(resourceName: "Unlabled Icon 2x"),#imageLiteral(resourceName: "All Recipes icon 2x")]
     //MARK: Variables
     var rowSelected = ""
     //MARK: Outlets
@@ -30,11 +31,22 @@ class MainSelectionTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.rowHeight = (view.frame.height  / 8)
+        tableView.isScrollEnabled = false
         
     }
     //MARK: IBActions
     
     //MARK: Instance Methods
+    
+//    func checkCellAndAddColor(cellName: String) -> UIColor {
+//        
+//        
+//    }
+//    
+    
+    
+    
     
     // MARK: - Table view data source
     
@@ -50,7 +62,10 @@ class MainSelectionTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MainCell", for: indexPath)
         cell.textLabel?.text = tableViewOptions[indexPath.row]
-        
+        cell.textLabel?.textColor = UIColor.white
+        cell.backgroundColor = tableViewColors[indexPath.row]
+        cell.imageView?.contentMode = .scaleAspectFit
+        cell.imageView?.image = tableViewImages[indexPath.row]
         return cell
     }
     
@@ -61,7 +76,6 @@ class MainSelectionTableViewController: UITableViewController {
         performSegue(withIdentifier: "CategoryRowSelectedSegue", sender: self)
         
     }
-    
     
     
     

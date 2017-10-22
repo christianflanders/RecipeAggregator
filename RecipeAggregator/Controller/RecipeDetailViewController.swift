@@ -24,7 +24,9 @@ class RecipeDetailViewController: UIViewController {
     //MARK: Weak Vars
     
     //MARK: Public Variables
-    lazy var selectedRecipe = RecipeFromURL()
+     var selectedRecipe = RecipeFromURL()
+    var recipeImage: UIImage?
+    
     //MARK: Private Variables
     
     //MARK: View Life Cycle
@@ -32,6 +34,18 @@ class RecipeDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         recipeNameLabel.text = selectedRecipe.name
+        recipeImagePreview.image = recipeImage
+        if recipeImage == nil {
+            DispatchQueue.global(qos: .background).async {
+                let stored = StoredImages()
+                let previewURL = stored.getPreviewImageURLFromHTML(url: self.selectedRecipe.url!)
+                let image = stored.downloadImageFromURL(previewURL!)
+                DispatchQueue.main.async {
+                    self.recipeImagePreview.image = image
+
+                }
+            }
+        }
         // Do any additional setup after loading the view.
     }
     
@@ -55,7 +69,9 @@ class RecipeDetailViewController: UIViewController {
             if let url = selectedRecipe.url {
                 destinationVC.url = url
             }
-            
+        } else if segue.identifier == "EditRecipeSegue" {
+            let destinationVC = segue.destination as! EditExistingRecipeViewController
+            destinationVC.selectedRecipe = selectedRecipe
         }
         
         

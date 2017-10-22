@@ -17,6 +17,7 @@ class ShareViewController: UIViewController {
     private var urlString: String?
     private var textString: String?
 
+    
     var selectedRecipe: RecipeFromURL!
     let store = PersistanceService.store
     var recipes = [RecipeFromURL]()
