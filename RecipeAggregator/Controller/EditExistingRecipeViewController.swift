@@ -8,14 +8,16 @@
 
 import UIKit
 
-class EditExistingRecipeViewController: UIViewController, UITextFieldDelegate {
+class EditExistingRecipeViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     let store = PersistanceService.store
     var nameChanged = false
     var oldRecipeName = ""
     var mealChanged = false
     
-
+    private let picker = UIImagePickerController()
+    private let camera = UIImagePickerController()
+    
 
     var selectedRecipe:RecipeFromURL?
     let mealSelection = ["Breakfast", "Lunch", "Dinner", "Snacks", "Other"]
@@ -23,6 +25,7 @@ class EditExistingRecipeViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var recipeNameTextField: UITextField!
     @IBOutlet weak var ratingSliderOutlet: UISlider!
     
+    @IBOutlet weak var recipeImage: UIImageView!
     @IBOutlet weak var mealSegementedControl: UISegmentedControl!
     @IBOutlet weak var ratingLabel: UILabel!
     
@@ -34,7 +37,8 @@ class EditExistingRecipeViewController: UIViewController, UITextFieldDelegate {
         recipeNameTextField.placeholder = selectedRecipe?.name
 
         recipeNameTextField.delegate = self
-        
+        picker.delegate = self
+        camera.delegate = self
         
     }
     
@@ -57,11 +61,16 @@ class EditExistingRecipeViewController: UIViewController, UITextFieldDelegate {
         selectedRecipe?.meal = mealSelection[mealSegementedControl.selectedSegmentIndex]
     }
     
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
+    @IBAction func selectNewImageButton(_ sender: UIButton) {
+        picker.allowsEditing = false
+        picker.sourceType = .photoLibrary
+        present(picker, animated: true, completion: nil)
     }
     
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        recipeImage.image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        dismiss(animated: true, completion: nil)
+    }
     
     @IBAction func doneButtonPressed(_ sender: Any) {
         if nameChanged == true {

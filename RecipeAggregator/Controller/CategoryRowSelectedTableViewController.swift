@@ -29,7 +29,7 @@ class CategoryRowSelectedTableViewController: UITableViewController {
     //MARK: Private Variables
     private var masterRecipeArray = [RecipeFromURL]()
     private var sortedRecipeArray = [RecipeFromURL]()
-    
+    private var categoryRowColors = [UIColor.init(red: 218/255, green: 69/255, blue: 83/255, alpha: 1), UIColor.init(red: 233/255, green: 87/255, blue: 62/255, alpha: 1),UIColor.init(red: 246/255, green: 187/255, blue: 67/255, alpha: 1), UIColor.init(red: 140/255, green: 192/255, blue: 81/255, alpha: 1), UIColor.init(red: 55/255, green: 187/255, blue: 155/255, alpha: 1), UIColor.init(red: 60/255, green: 174/255, blue: 218/255, alpha: 1),UIColor.init(red: 150/255, green: 123/255, blue: 220/255, alpha: 1),]
     
     
     //MARK: View Life Cycle
@@ -134,6 +134,7 @@ override func tableView(_ tableView: UITableView, numberOfRowsInSection section:
 
 override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeCell", for: indexPath) as! RecipeTableViewCell
+    cell.backgroundColor = categoryRowColors[indexPath.row % 7]
     let selectedRecipe = sortedRecipeArray[indexPath.row]
     if let name = selectedRecipe.name {
         if name == "No name found" {
