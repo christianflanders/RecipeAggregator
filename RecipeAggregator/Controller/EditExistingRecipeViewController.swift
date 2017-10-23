@@ -15,10 +15,11 @@ class EditExistingRecipeViewController: UIViewController, UITextFieldDelegate, U
     var oldRecipeName = ""
     var mealChanged = false
     
-    private let picker = UIImagePickerController()
-    private let camera = UIImagePickerController()
+    let picker = UIImagePickerController()
+    let camera = UIImagePickerController()
+    private let alertController = UIAlertController(title: "Update Image", message: nil, preferredStyle: .actionSheet)
     
-
+    
     var selectedRecipe:RecipeFromURL?
     let mealSelection = ["Breakfast", "Lunch", "Dinner", "Snacks", "Other"]
     
@@ -35,10 +36,20 @@ class EditExistingRecipeViewController: UIViewController, UITextFieldDelegate, U
     override func viewDidLoad() {
         super.viewDidLoad()
         recipeNameTextField.placeholder = selectedRecipe?.name
-
+        
         recipeNameTextField.delegate = self
         picker.delegate = self
         camera.delegate = self
+        let cameraAction = UIAlertAction(title: "Use Camera", style: .default) { action in
+            self.present(self.camera, animated: true, completion: nil)
+        }
+        let library = UIAlertAction(title: "Use Library", style: .default) { action in
+            self.present(self.picker, animated: true, completion: nil)
+        }
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cameraAction)
+        alertController.addAction(library)
+        alertController.addAction(cancel)
         
     }
     
@@ -54,7 +65,7 @@ class EditExistingRecipeViewController: UIViewController, UITextFieldDelegate, U
         selectedRecipe?.rating = Int16(currentValue)
         ratingLabel.text = String(currentValue)
     }
-  
+    
     
     
     @IBAction func mealSegmentedControlPressed(_ sender: UISegmentedControl) {
@@ -64,7 +75,8 @@ class EditExistingRecipeViewController: UIViewController, UITextFieldDelegate, U
     @IBAction func selectNewImageButton(_ sender: UIButton) {
         picker.allowsEditing = false
         picker.sourceType = .photoLibrary
-        present(picker, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
+        //        present(picker, animated: true, completion: nil)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
