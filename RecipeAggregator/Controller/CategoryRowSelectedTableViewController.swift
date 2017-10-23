@@ -176,6 +176,17 @@ override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: Inde
     performSegue(withIdentifier: "RecipeTablePressedSegue", sender: self)
 }
 
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.delete {
+            store.delete(recipe: sortedRecipeArray[indexPath.row])
+            sortedRecipeArray.remove(at: indexPath.row)
+            tableView.reloadData()
+        }
+    }
 // MARK: - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
