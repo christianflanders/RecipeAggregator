@@ -27,9 +27,6 @@ class LongPressDetailViewController: UIViewController, UIGestureRecognizerDelega
         mainCardView.addGestureRecognizer(tap)
         originalPosition = mainCardView.center
 
-        
-        
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {

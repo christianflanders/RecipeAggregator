@@ -224,6 +224,8 @@ class CategoryRowSelectedTableViewController: UITableViewController, UIGestureRe
         if indexPath == nil {
             
         } else {
+            let generator = UIImpactFeedbackGenerator(style: .heavy)
+            generator.impactOccurred()
             performSegue(withIdentifier: "LongPressSegue", sender: self)
         }
         
