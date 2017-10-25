@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CategoryRowSelectedTableViewController: UITableViewController {
+class CategoryRowSelectedTableViewController: UITableViewController, UIGestureRecognizerDelegate {
     //MARK: Enums
     
     //MARK: Constants
@@ -38,6 +38,11 @@ class CategoryRowSelectedTableViewController: UITableViewController {
         reloadTableViewWithoutNotification()
         //we get this notification when the app is opened, allowing us to reload data for the tableview if a recipe has been added.
         NotificationCenter.default.addObserver(forName: Notification.Name.UIApplicationWillEnterForeground, object: nil, queue: nil, using: reloadTableViewWithNotification)
+        //Adding long press for tableViewOptions
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action:#selector(tableViewLongPressOnCell))
+        longPressGesture.minimumPressDuration = 0.5
+        longPressGesture.delegate = self
+        self.tableView.addGestureRecognizer(longPressGesture)
     }
     
     deinit {
@@ -60,14 +65,14 @@ class CategoryRowSelectedTableViewController: UITableViewController {
         store.fetchRecipes()
         masterRecipeArray = self.store.fetchedRecipes
         sortRecipes(categorySelected: categorySelected)
-        downloadImagesFromUserDefaultsForRecipes(recipeArray: sortedRecipeArray)
+        self.downloadImagesFromUserDefaultsForRecipes(recipeArray: self.sortedRecipeArray)
         tableView.reloadData()
     }
     func reloadTableViewWithoutNotification() {
         store.fetchRecipes()
         masterRecipeArray = self.store.fetchedRecipes
         sortRecipes(categorySelected: categorySelected)
-        downloadImagesFromUserDefaultsForRecipes(recipeArray: sortedRecipeArray)
+        self.downloadImagesFromUserDefaultsForRecipes(recipeArray: self.sortedRecipeArray)
         tableView.reloadData()
     }
     
@@ -156,6 +161,7 @@ class CategoryRowSelectedTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeCell", for: indexPath) as! RecipeTableViewCell
+        cell.selectionStyle = .none
         cell.backgroundColor = categoryRowColors[indexPath.row % 7]
         let selectedRecipe = sortedRecipeArray[indexPath.row]
         if let name = selectedRecipe.name {
@@ -209,6 +215,18 @@ class CategoryRowSelectedTableViewController: UITableViewController {
             sortedRecipeArray.remove(at: indexPath.row)
             tableView.reloadData()
         }
+    }
+    
+    @objc func tableViewLongPressOnCell(longPressGesture: UILongPressGestureRecognizer) {
+        print("Long press detected")
+        let press = longPressGesture.location(in: self.tableView)
+        let indexPath = self.tableView.indexPathForRow(at: press)
+        if indexPath == nil {
+            
+        } else {
+            performSegue(withIdentifier: "LongPressSegue", sender: self)
+        }
+        
     }
     // MARK: - Navigation
     
