@@ -137,7 +137,7 @@ class CategoryRowSelectedTableViewController: UITableViewController, UIGestureRe
             if let image = storedImages.grabImageFromUserDefaults(location: i.url!) {
                 storedImages.images[i.url!] = image
             } else {
-                DispatchQueue.global(qos:.userInitiated).async {
+                DispatchQueue.global(qos:.background).async {
                     if let previewImageURL = self.storedImages.getPreviewImageURLFromHTML(url: i.url!) {
                         let image = self.storedImages.downloadImageFromURL(previewImageURL)
                         self.storedImages.images[i.url!] = image
@@ -147,6 +147,8 @@ class CategoryRowSelectedTableViewController: UITableViewController, UIGestureRe
             }
         }
     }
+    
+    
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {

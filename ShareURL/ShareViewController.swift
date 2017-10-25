@@ -94,7 +94,7 @@ class ShareViewController: UIViewController {
             }
             print(filtered)
             if filtered.count != 0 {
-                let thingsToFilter = [searchFor, "\"", ">", " /", "\n","data-react-helmet", "=true"]
+                let thingsToFilter = [searchFor, "\"", ">", " /", "\n","data-react-helmet", "=true","amp;"]
                 var titleHTMLTag = filtered[0]
                 for i in thingsToFilter {
                     titleHTMLTag = titleHTMLTag.replacingOccurrences(of: i, with: "")
@@ -106,7 +106,7 @@ class ShareViewController: UIViewController {
                     $0.contains("title")
                 }
                 if tryTag.count != 0 {
-                    let thingsToFilter = ["\"", ">", " /", "\n", "title","data-react-helmet","=true"]
+                    let thingsToFilter = ["\"", ">", " /", "\n", "title","data-react-helmet","=true","amp;"]
                     var titleHTMLTag = tryTag[0]
                     for i in thingsToFilter {
                         titleHTMLTag = titleHTMLTag.replacingOccurrences(of: i, with: "")

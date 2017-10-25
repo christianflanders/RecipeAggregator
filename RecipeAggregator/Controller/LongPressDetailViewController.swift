@@ -16,6 +16,9 @@ class LongPressDetailViewController: UIViewController, UIGestureRecognizerDelega
     private var divisor: CGFloat!
     private var originalPosition = CGPoint()
     
+    private let gradient = CAGradientLayer()
+    private let colors = [UIColor.init(red: 89/255, green: 86/255, blue: 86/255, alpha: 80/100).cgColor,UIColor.init(red: 26/255, green: 25/255, blue: 25/255, alpha: 80/100).cgColor]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         divisor = (view.frame.width / 2) / 0.61
@@ -26,6 +29,12 @@ class LongPressDetailViewController: UIViewController, UIGestureRecognizerDelega
         mainCardView.addGestureRecognizer(pan)
         mainCardView.addGestureRecognizer(tap)
         originalPosition = mainCardView.center
+        gradient.frame = self.view.frame
+        gradient.colors = colors
+        gradient.locations = [0.0, 0.7]
+//        self.view.layer.addSublayer(gradient)
+        self.view.layer.insertSublayer(gradient, at: 0)
+        
     }
     
 
@@ -50,6 +59,9 @@ class LongPressDetailViewController: UIViewController, UIGestureRecognizerDelega
     }
     
     
+    @IBAction func dismissButtonPressed(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
     
     
     
