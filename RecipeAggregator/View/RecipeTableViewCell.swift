@@ -2,7 +2,7 @@
 //  RecipeTableViewCell.swift
 //  RecipeAggregator
 //
-//  Created by Christian Flanders on 9/11/17.
+//  Created by Christian Flanders on 10/24/17.
 //  Copyright © 2017 Christian Flanders. All rights reserved.
 //
 
@@ -10,10 +10,13 @@ import UIKit
 
 class RecipeTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var cellRatingLabel: UILabel!
-    @IBOutlet weak var cellLabel: UILabel!
-    @IBOutlet weak var dateAddedCell: UILabel!
-    @IBOutlet weak var cellRecipeImage: UIImageView!
+    @IBOutlet weak var recipeImageView: UIImageView!
+    @IBOutlet weak var recipeNameLabel: UILabel!
+    @IBOutlet weak var recipeRatingLabel: UILabel!
+    @IBOutlet weak var dateAddedLabel: UILabel!
+    
+    
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,6 +27,10 @@ class RecipeTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    override func prepareForReuse() {
+        recipeImageView.image = nil
     }
 
 }

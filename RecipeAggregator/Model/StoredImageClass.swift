@@ -60,23 +60,23 @@ class StoredImages {
             return nil
         }
     }
-//    func downloadAllImagesFromArray(_ inputArray: [RecipeFromURL]) {
-//        for i in inputArray {
-//            guard let imagePreviewURL = i.previewImageURL else {
-//                //dosomething here
-//                return
-//            }
-//            if let url = URL(string: imagePreviewURL) {
-//                DispatchQueue.main.async {
-//                    let image = self.downloadImageFromURL(url)
-//                    self.images[i.url!] = image
-//                }
-//                
-//            }
-//        }
-//    }
-//    
     
+    func storeImageInUserDefaults(image: UIImage, location: String) {
+        let imageData: Data = UIImagePNGRepresentation(image) as! Data
+        UserDefaults.standard.set(imageData, forKey: location)
+        
+    }
+    
+    func grabImageFromUserDefaults(location:String) -> UIImage? {
+        if let dataFromDefaults = UserDefaults.standard.object(forKey: location) {
+            let dataForImage = dataFromDefaults as! Data
+            return UIImage(data: dataForImage)!
+        } else {
+            return nil
+        }
+    }
+
+
 
     
 }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6B13724D1F6B10BF00EE07C8 /* RecipeModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6B13724B1F6B10BF00EE07C8 /* RecipeModel.xcdatamodeld */; };
+		6B36D4D61FA00AA400AE8424 /* RecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B36D4D51FA00AA400AE8424 /* RecipeTableViewCell.swift */; };
 		6B3FE38C1F7C5F05008AC01C /* TableViewPressedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3FE38B1F7C5F05008AC01C /* TableViewPressedViewController.swift */; };
 		6B3FE38E1F7C7177008AC01C /* EditExistingRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3FE38D1F7C7177008AC01C /* EditExistingRecipeViewController.swift */; };
 		6B3FE3901F7D8082008AC01C /* SortingOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3FE38F1F7D8082008AC01C /* SortingOptionsViewController.swift */; };
@@ -21,6 +22,7 @@
 		6B4BE3241F996D3D005BE38C /* RecipeFromURL+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4BE3221F996D3D005BE38C /* RecipeFromURL+CoreDataProperties.swift */; };
 		6B4BE3251F996D41005BE38C /* RecipeFromURL+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4BE3221F996D3D005BE38C /* RecipeFromURL+CoreDataProperties.swift */; };
 		6B4BE3261F996D41005BE38C /* RecipeFromURL+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4BE3211F996D3D005BE38C /* RecipeFromURL+CoreDataClass.swift */; };
+		6B5F15C41F9E953B00C225C2 /* UIColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5F15C31F9E953B00C225C2 /* UIColors.swift */; };
 		6B68BE4E1F6C669A00B14003 /* PercistanceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B68BE4D1F6C669A00B14003 /* PercistanceService.swift */; };
 		6BA882891F82D1210063D096 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA882881F82D1210063D096 /* MainTabBarViewController.swift */; };
 		6BAB1F5F1F992DD500E67B9D /* MainSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BAB1F5E1F992DD500E67B9D /* MainSelectionTableViewController.swift */; };
@@ -31,7 +33,6 @@
 		6BBF7A0D1F676D7600FD87D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BBF7A0B1F676D7600FD87D6 /* Main.storyboard */; };
 		6BBF7A0F1F676D7600FD87D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BBF7A0E1F676D7600FD87D6 /* Assets.xcassets */; };
 		6BBF7A121F676D7600FD87D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BBF7A101F676D7600FD87D6 /* LaunchScreen.storyboard */; };
-		6BBF7A1A1F676DDD00FD87D6 /* RecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBF7A191F676DDD00FD87D6 /* RecipeTableViewCell.swift */; };
 		6BBF7A1C1F676E2600FD87D6 /* RecipeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBF7A1B1F676E2600FD87D6 /* RecipeTableViewController.swift */; };
 		6BBF7A201F67AFC700FD87D6 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBF7A1F1F67AFC700FD87D6 /* WebViewController.swift */; };
 		6BF6E2121F99567C00BDBEF2 /* RecipeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF6E2111F99567C00BDBEF2 /* RecipeDetailViewController.swift */; };
@@ -65,6 +66,7 @@
 /* Begin PBXFileReference section */
 		6B13724C1F6B10BF00EE07C8 /* RecipeModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RecipeModel.xcdatamodel; sourceTree = "<group>"; };
 		6B1372821F6B283900EE07C8 /* RecipeAggregator.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RecipeAggregator.entitlements; sourceTree = "<group>"; };
+		6B36D4D51FA00AA400AE8424 /* RecipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTableViewCell.swift; sourceTree = "<group>"; };
 		6B3FE38B1F7C5F05008AC01C /* TableViewPressedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewPressedViewController.swift; sourceTree = "<group>"; };
 		6B3FE38D1F7C7177008AC01C /* EditExistingRecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditExistingRecipeViewController.swift; sourceTree = "<group>"; };
 		6B3FE38F1F7D8082008AC01C /* SortingOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingOptionsViewController.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 		6B47C2CE1F6C6B72002E42A3 /* ShareURL.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareURL.entitlements; sourceTree = "<group>"; };
 		6B4BE3211F996D3D005BE38C /* RecipeFromURL+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecipeFromURL+CoreDataClass.swift"; sourceTree = "<group>"; };
 		6B4BE3221F996D3D005BE38C /* RecipeFromURL+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecipeFromURL+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		6B5F15C31F9E953B00C225C2 /* UIColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColors.swift; sourceTree = "<group>"; };
 		6B68BE4D1F6C669A00B14003 /* PercistanceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercistanceService.swift; sourceTree = "<group>"; };
 		6BA882881F82D1210063D096 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		6BAB1F5E1F992DD500E67B9D /* MainSelectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSelectionTableViewController.swift; sourceTree = "<group>"; };
@@ -88,7 +91,6 @@
 		6BBF7A0E1F676D7600FD87D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6BBF7A111F676D7600FD87D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6BBF7A131F676D7600FD87D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6BBF7A191F676DDD00FD87D6 /* RecipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTableViewCell.swift; sourceTree = "<group>"; };
 		6BBF7A1B1F676E2600FD87D6 /* RecipeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTableViewController.swift; sourceTree = "<group>"; };
 		6BBF7A1F1F67AFC700FD87D6 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		6BF6E2111F99567C00BDBEF2 /* RecipeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailViewController.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 			children = (
 				6BAB1F5E1F992DD500E67B9D /* MainSelectionTableViewController.swift */,
 				6BAB1F601F99336600E67B9D /* CategoryRowSelectedTableViewController.swift */,
+				6B5F15C31F9E953B00C225C2 /* UIColors.swift */,
 				6BF6E2111F99567C00BDBEF2 /* RecipeDetailViewController.swift */,
 				6BBF7A071F676D7600FD87D6 /* AppDelegate.swift */,
 				6B3FE38D1F7C7177008AC01C /* EditExistingRecipeViewController.swift */,
@@ -144,8 +147,8 @@
 			children = (
 				6BBF7A0E1F676D7600FD87D6 /* Assets.xcassets */,
 				6BBF7A0B1F676D7600FD87D6 /* Main.storyboard */,
+				6B36D4D51FA00AA400AE8424 /* RecipeTableViewCell.swift */,
 				6BBF7A101F676D7600FD87D6 /* LaunchScreen.storyboard */,
-				6BBF7A191F676DDD00FD87D6 /* RecipeTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -345,11 +348,12 @@
 				6BBF7A201F67AFC700FD87D6 /* WebViewController.swift in Sources */,
 				6BF6E2121F99567C00BDBEF2 /* RecipeDetailViewController.swift in Sources */,
 				6B3FE38C1F7C5F05008AC01C /* TableViewPressedViewController.swift in Sources */,
-				6BBF7A1A1F676DDD00FD87D6 /* RecipeTableViewCell.swift in Sources */,
 				6BAB1F611F99336600E67B9D /* CategoryRowSelectedTableViewController.swift in Sources */,
 				6BAB1F631F9933DC00E67B9D /* CategoryEnum.swift in Sources */,
+				6B5F15C41F9E953B00C225C2 /* UIColors.swift in Sources */,
 				6B3FE38E1F7C7177008AC01C /* EditExistingRecipeViewController.swift in Sources */,
 				6B3FE3901F7D8082008AC01C /* SortingOptionsViewController.swift in Sources */,
+				6B36D4D61FA00AA400AE8424 /* RecipeTableViewCell.swift in Sources */,
 				6BBF7A1C1F676E2600FD87D6 /* RecipeTableViewController.swift in Sources */,
 				6B4BE3241F996D3D005BE38C /* RecipeFromURL+CoreDataProperties.swift in Sources */,
 				6BBBCD891F7D9F900023D177 /* dates.swift in Sources */,

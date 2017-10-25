@@ -15,7 +15,7 @@ class MainSelectionTableViewController: UITableViewController {
     
     //MARK: Constants
     let tableViewOptions = ["Breakfast", "Lunch", "Dinner", "Snacks", "Favorites","Unsorted", "All"]
-    let tableViewColors = [UIColor.init(red: 251/255, green: 110/255, blue: 82/255, alpha: 1),UIColor.init(red: 255/255, green: 207/255, blue: 85/255, alpha: 100),UIColor.init(red: 160/255, green: 212/255, blue: 104/255, alpha: 1),UIColor.init(red: 72/255, green: 207/255, blue: 174/255, alpha: 100),UIColor.init(red: 79/255, green: 192/255, blue: 232/255, alpha: 1), UIColor.init(red: 93/255, green: 155/255, blue: 236/255, alpha: 100),UIColor.init(red: 172/255, green: 146/255, blue: 237/255, alpha: 100)]
+    let tableViewColors = recipeAppColors().mainTableViewColors.tableViewColors
     let tableViewImages = [#imageLiteral(resourceName: "Breakfast Icon 2x"),#imageLiteral(resourceName: "Lunch icon 2x"),#imageLiteral(resourceName: "Dinner Icon 2x"),#imageLiteral(resourceName: "Snacks Icon 2x"),#imageLiteral(resourceName: "Favorites Icon 2x"),#imageLiteral(resourceName: "Unlabled Icon 2x"),#imageLiteral(resourceName: "All Recipes icon 2x")]
     //MARK: Variables
     var rowSelected = ""
@@ -39,12 +39,7 @@ class MainSelectionTableViewController: UITableViewController {
     
     //MARK: Instance Methods
     
-//    func checkCellAndAddColor(cellName: String) -> UIColor {
-//        
-//        
-//    }
-//    
-    
+
     
     
     

@@ -38,6 +38,9 @@ class RecipeDetailViewController: UIViewController {
         if recipeImage == nil {
             DispatchQueue.global(qos: .background).async {
                 let stored = StoredImages()
+                if let storedImage = stored.grabImageFromUserDefaults(location: self.selectedRecipe.url!) {
+                    
+                }
                 if let previewURL = stored.getPreviewImageURLFromHTML(url: self.selectedRecipe.url!) {
                     let image = stored.downloadImageFromURL(previewURL)
                     DispatchQueue.main.async {

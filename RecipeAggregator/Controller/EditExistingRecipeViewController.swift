@@ -31,7 +31,7 @@ class EditExistingRecipeViewController: UIViewController, UITextFieldDelegate, U
     @IBOutlet weak var ratingLabel: UILabel!
     
     
-    
+    let storedImages = StoredImages()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,7 +80,9 @@ class EditExistingRecipeViewController: UIViewController, UITextFieldDelegate, U
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        recipeImage.image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        recipeImage.image = image
+        storedImages.storeImageInUserDefaults(image: image, location: (selectedRecipe?.url!)!)
         dismiss(animated: true, completion: nil)
     }
     
