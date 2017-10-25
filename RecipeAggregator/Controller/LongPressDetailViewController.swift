@@ -19,6 +19,9 @@ class LongPressDetailViewController: UIViewController, UIGestureRecognizerDelega
     private let gradient = CAGradientLayer()
     private let colors = [UIColor.init(red: 89/255, green: 86/255, blue: 86/255, alpha: 80/100).cgColor,UIColor.init(red: 26/255, green: 25/255, blue: 25/255, alpha: 80/100).cgColor]
     
+    var selectedRecipe = RecipeFromURL()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         divisor = (view.frame.width / 2) / 0.61
@@ -46,6 +49,7 @@ class LongPressDetailViewController: UIViewController, UIGestureRecognizerDelega
     //MARK: IBActions
     
     @IBAction func viewRecipeButtonPressed(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
         
     }
     

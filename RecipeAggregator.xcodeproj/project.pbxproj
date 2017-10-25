@@ -112,8 +112,8 @@
 		6B14A33C1F74590500949EB0 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				6BAB1F5E1F992DD500E67B9D /* MainSelectionTableViewController.swift */,
 				6BAB1F601F99336600E67B9D /* CategoryRowSelectedTableViewController.swift */,
+				6BAB1F5E1F992DD500E67B9D /* MainSelectionTableViewController.swift */,
 				6BEE44C81FA042D90001434B /* LongPressDetailViewController.swift */,
 				6BF6E2111F99567C00BDBEF2 /* RecipeDetailViewController.swift */,
 				6BBF7A071F676D7600FD87D6 /* AppDelegate.swift */,

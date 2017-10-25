@@ -244,6 +244,9 @@ class CategoryRowSelectedTableViewController: UITableViewController, UIGestureRe
             if let imageToSend = storedImages.images[selectedRecipe.url!] {
                 destinationVC.recipeImage = imageToSend
             }
+        } else if segue.identifier == "LongPressSegue" {
+            let destination = segue.destination as! LongPressDetailViewController
+            destination.selectedRecipe = selectedRecipe
         }
     }
     
