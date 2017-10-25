@@ -133,15 +133,17 @@ class CategoryRowSelectedTableViewController: UITableViewController, UIGestureRe
     }
     
     func downloadImagesFromUserDefaultsForRecipes(recipeArray: [RecipeFromURL]){
-        for i in recipeArray{
-            if let image = storedImages.grabImageFromUserDefaults(location: i.url!) {
-                storedImages.images[i.url!] = image
-            } else {
-                DispatchQueue.global(qos:.background).async {
-                    if let previewImageURL = self.storedImages.getPreviewImageURLFromHTML(url: i.url!) {
-                        let image = self.storedImages.downloadImageFromURL(previewImageURL)
-                        self.storedImages.images[i.url!] = image
-                        self.storedImages.storeImageInUserDefaults(image: image, location: i.url!)
+        DispatchQueue.global(qos: .background).async {
+            for i in recipeArray{
+                if let image = self.storedImages.grabImageFromUserDefaults(location: i.url!) {
+                    self.storedImages.images[i.url!] = image
+                } else {
+                    DispatchQueue.global(qos:.background).async {
+                        if let previewImageURL = self.storedImages.getPreviewImageURLFromHTML(url: i.url!) {
+                            let image = self.storedImages.downloadImageFromURL(previewImageURL)
+                            self.storedImages.images[i.url!] = image
+                            self.storedImages.storeImageInUserDefaults(image: image, location: i.url!)
+                        }
                     }
                 }
             }
@@ -190,7 +192,7 @@ class CategoryRowSelectedTableViewController: UITableViewController, UIGestureRe
                     DispatchQueue.main.async { [weak self] in
                         if let cellToUpdate = self?.tableView?.cellForRow(at: indexPath) as? RecipeTableViewCell {
                             cellToUpdate.recipeImageView.image = self?.storedImages.images[recipeURL]
-                            tableView.rowHeight = 120
+//                            tableView.rowHeight = 120
                             cellToUpdate.setNeedsLayout()
                         }
                     }
