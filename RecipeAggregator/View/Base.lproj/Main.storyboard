@@ -841,17 +841,32 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tcU-mx-NNa">
                                                 <rect key="frame" x="0.0" y="0.0" width="240" height="84.5"/>
                                                 <color key="backgroundColor" red="0.99391180280000002" green="0.42889541390000002" blue="0.29723438619999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" title="Button"/>
+                                                <state key="normal" title="View Recipe">
+                                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="viewRecipeButtonPressed:" destination="fvw-DQ-VVJ" eventType="touchUpInside" id="SC4-7Y-yZV"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ukL-DL-tqK">
                                                 <rect key="frame" x="0.0" y="106.5" width="240" height="85"/>
                                                 <color key="backgroundColor" red="0.99391180280000002" green="0.42889541390000002" blue="0.29723438619999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" title="Button"/>
+                                                <state key="normal" title="Share Recipe">
+                                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="shareRecipeButtonPressed:" destination="fvw-DQ-VVJ" eventType="touchUpInside" id="Kxj-kp-PM3"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3XD-Ul-CdU">
                                                 <rect key="frame" x="0.0" y="213.5" width="240" height="84.5"/>
                                                 <color key="backgroundColor" red="0.99391180280000002" green="0.42889541390000002" blue="0.29723438619999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" title="Button"/>
+                                                <state key="normal" title="Edit Recipe">
+                                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="editRecipeButtonPressed:" destination="fvw-DQ-VVJ" eventType="touchUpInside" id="F9j-s3-UBn"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -864,6 +879,14 @@
                                     <constraint firstAttribute="bottom" secondItem="OkH-ss-VHE" secondAttribute="bottom" id="z3Y-2Y-jQM"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vke-Tl-q0B">
+                                <rect key="frame" x="16" y="83" width="54" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <state key="normal" title="Dismiss">
+                                    <color key="titleColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="Bxx-5W-xkP" firstAttribute="top" secondItem="8Yt-o2-hp8" secondAttribute="top" constant="177" id="Gs4-18-qVa"/>

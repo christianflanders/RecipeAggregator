@@ -26,16 +26,36 @@ class LongPressDetailViewController: UIViewController, UIGestureRecognizerDelega
         mainCardView.addGestureRecognizer(pan)
         mainCardView.addGestureRecognizer(tap)
         originalPosition = mainCardView.center
-
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    @objc func tapGesture(_ sender: UITapGestureRecognizer){
+    //MARK: IBActions
+    
+    @IBAction func viewRecipeButtonPressed(_ sender: UIButton) {
         
+    }
+    
+    @IBAction func shareRecipeButtonPressed(_ sender: UIButton) {
+        
+    }
+    
+    @IBAction func editRecipeButtonPressed(_ sender: UIButton) {
+        
+        
+    }
+    
+    
+    
+    
+    
+    //MARK: Gesture Recognizer
+    @objc func tapGesture(_ sender: UITapGestureRecognizer){
+        dismiss(animated: true, completion: nil)
     }
     
     @objc func panGesture(_ sender: UIPanGestureRecognizer){
