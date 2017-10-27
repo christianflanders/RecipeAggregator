@@ -18,28 +18,41 @@ class RecipeDetailViewController: UIViewController {
     //MARK: Outlets
     
     @IBOutlet weak var recipeImagePreview: UIImageView!
-    
+    @IBOutlet weak var notesPreview: UITextView!
     @IBOutlet weak var recipeNameLabel: UILabel!
     
     //MARK: Weak Vars
     
     //MARK: Public Variables
-     var selectedRecipe = RecipeFromURL()
+    var selectedRecipe = RecipeFromURL()
     var recipeImage: UIImage?
     
     //MARK: Private Variables
     
     //MARK: View Life Cycle
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewDidAppear(_ animated: Bool) {
+        reloadRecipeInformation()
+    }
+    
+    
+    //MARK: IBActions
+    
+    //MARK: Instance Methods
+    
+    func reloadRecipeInformation() {
         recipeNameLabel.text = selectedRecipe.name
+        if let notes = selectedRecipe.notes {
+            notesPreview.text = notes
+        } else {
+            notesPreview.text = "No notes added"
+        }
         recipeImagePreview.image = recipeImage
         if recipeImage == nil {
             DispatchQueue.global(qos: .background).async {
                 let stored = StoredImages()
                 if let storedImage = stored.grabImageFromUserDefaults(location: self.selectedRecipe.url!) {
-                    
+                    self.recipeImagePreview.image = storedImage
                 }
                 if let previewURL = stored.getPreviewImageURLFromHTML(url: self.selectedRecipe.url!) {
                     let image = stored.downloadImageFromURL(previewURL)
@@ -51,21 +64,10 @@ class RecipeDetailViewController: UIViewController {
                         self.recipeImagePreview.image = #imageLiteral(resourceName: "errorstop")
                     }
                 }
-
+                
             }
         }
-        // Do any additional setup after loading the view.
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    //MARK: IBActions
-    
-    //MARK: Instance Methods
-    
-    
     
     
     // MARK: - Navigation

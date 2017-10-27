@@ -8,10 +8,11 @@
 
 import UIKit
 
-class EditExistingRecipeViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class EditExistingRecipeViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate ,UITextViewDelegate {
     
     let store = PersistanceService.store
     var nameChanged = false
+    var notesChanged = false
     var oldRecipeName = ""
     var mealChanged = false
     var selectedRecipeImage = UIImage()
@@ -27,6 +28,7 @@ class EditExistingRecipeViewController: UIViewController, UITextFieldDelegate, U
     @IBOutlet weak var recipeNameTextField: UITextField!
     @IBOutlet weak var ratingSliderOutlet: UISlider!
     
+    @IBOutlet weak var notesTextField: UITextView!
     @IBOutlet weak var recipeImage: UIImageView!
     @IBOutlet weak var mealSegementedControl: UISegmentedControl!
     @IBOutlet weak var ratingLabel: UILabel!
@@ -37,10 +39,16 @@ class EditExistingRecipeViewController: UIViewController, UITextFieldDelegate, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        titleLabel.text = "Editing: \(selectedRecipe?.name)"
+        titleLabel.text = "Editing: \(selectedRecipe?.name ?? "No Name Found \(selectedRecipe?.url)")"
         recipeNameTextField.placeholder = selectedRecipe?.name
         recipeImage.image = selectedRecipeImage
         recipeNameTextField.delegate = self
+        notesTextField.delegate = self
+        if let notes = selectedRecipe?.notes {
+           notesTextField.text = notes
+        } else {
+            notesTextField.text = "Edit Notes..."
+        }
         picker.delegate = self
         camera.delegate = self
         let cameraAction = UIAlertAction(title: "Use Camera", style: .default) { action in
@@ -57,11 +65,14 @@ class EditExistingRecipeViewController: UIViewController, UITextFieldDelegate, U
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
+        print("Text field method called!")
         nameChanged = true
         oldRecipeName = (selectedRecipe?.name)!
-        
     }
     
+    func textViewDidEndEditing(_ textView: UITextView) {
+        selectedRecipe?.notes = textView.text
+    }
     
     @IBAction func ratingSlider(_ sender: UISlider) {
         let currentValue = ratingSliderOutlet.value
