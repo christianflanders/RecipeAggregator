@@ -14,6 +14,7 @@ class EditExistingRecipeViewController: UIViewController, UITextFieldDelegate, U
     var nameChanged = false
     var oldRecipeName = ""
     var mealChanged = false
+    var selectedRecipeImage = UIImage()
     
     let picker = UIImagePickerController()
     let camera = UIImagePickerController()
@@ -29,14 +30,16 @@ class EditExistingRecipeViewController: UIViewController, UITextFieldDelegate, U
     @IBOutlet weak var recipeImage: UIImageView!
     @IBOutlet weak var mealSegementedControl: UISegmentedControl!
     @IBOutlet weak var ratingLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
     
     
     let storedImages = StoredImages()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        titleLabel.text = "Editing: \(selectedRecipe?.name)"
         recipeNameTextField.placeholder = selectedRecipe?.name
-        
+        recipeImage.image = selectedRecipeImage
         recipeNameTextField.delegate = self
         picker.delegate = self
         camera.delegate = self
@@ -63,7 +66,7 @@ class EditExistingRecipeViewController: UIViewController, UITextFieldDelegate, U
     @IBAction func ratingSlider(_ sender: UISlider) {
         let currentValue = ratingSliderOutlet.value
         selectedRecipe?.rating = Int16(currentValue)
-        ratingLabel.text = String(currentValue)
+        ratingLabel.text = String(Int(currentValue))
     }
     
     

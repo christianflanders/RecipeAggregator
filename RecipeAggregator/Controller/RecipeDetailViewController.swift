@@ -80,6 +80,7 @@ class RecipeDetailViewController: UIViewController {
         } else if segue.identifier == "EditRecipeSegue" {
             let destinationVC = segue.destination as! EditExistingRecipeViewController
             destinationVC.selectedRecipe = selectedRecipe
+            destinationVC.selectedRecipeImage = recipeImagePreview.image!
         }
         
         
